@@ -1,0 +1,2412 @@
+<!doctype html><html><head><meta charset=utf-8><title>Quiz Akuntansi Biaya</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* QuizLearn: monokrom hitam-putih-abu dengan efek kaca (glass).
+   Tata letak: satu kolom sempit seperti aplikasi HP, kartu kaca di atas latar abu bergradasi,
+   navigasi melayang di bawah. Semua warna diatur lewat variabel di bawah ini. */
+:root{
+  --bg:#E8E8E8;
+  --ink:#0A0A0A;
+  --ink-2:#4F4F4F;
+  --glass:rgba(255,255,255,.52);
+  --glass-hi:rgba(255,255,255,.72);
+  --edge:rgba(255,255,255,.82);
+  --track:rgba(0,0,0,.10);
+  --shadow:0 8px 24px rgba(0,0,0,.07), inset 0 1px 0 rgba(255,255,255,.9);
+  --dark-1:#2C2C2C;
+  --dark-2:#0A0A0A;
+  --font:'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:14px;
+  line-height:1.5;
+}
+button,input,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.on-dark :focus-visible{outline-color:#fff}
+
+/* latar */
+.bg{
+  position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(320px 320px at 100% 0%, #fff 0%, rgba(255,255,255,0) 70%),
+    radial-gradient(320px 320px at 0% 42%, rgba(90,90,90,.38) 0%, rgba(90,90,90,0) 70%),
+    radial-gradient(340px 340px at 100% 86%, rgba(60,60,60,.34) 0%, rgba(60,60,60,0) 70%),
+    linear-gradient(165deg,#F6F6F6 0%,#DCDCDC 48%,#F0F0F0 100%);
+}
+
+/* kerangka */
+.app{
+  max-width:520px;margin:0 auto;
+  padding-block:20px 120px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:flex;flex-direction:column;gap:14px;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+  width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex:none;
+}
+.brand-name{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.brand-sub{font-size:12px;color:var(--ink-2)}
+main{display:flex;flex-direction:column;gap:14px;min-width:0;outline:none}
+
+h1.h1{margin:6px 0 0;font-size:27px;font-weight:800;letter-spacing:-.025em;line-height:1.15;text-wrap:balance}
+h2.h2{margin:0;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+h3.h3{margin:0;font-size:15px;font-weight:700}
+.lead{margin:0;color:var(--ink-2);font-size:14px;line-height:1.5}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink);flex:none}
+.muted{color:var(--ink-2)}
+.small{font-size:12px}
+
+/* kaca */
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(20px) saturate(125%);
+  backdrop-filter:blur(20px) saturate(125%);
+  border:1px solid var(--edge);
+  box-shadow:var(--shadow);
+}
+.card{border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+
+/* tombol */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:46px;padding:0 20px;border-radius:23px;
+  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,var(--dark-1),var(--dark-2));
+  color:#fff;font-weight:700;
+  box-shadow:0 8px 18px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.22);
+  text-align:center;
+}
+.btn[disabled]{background:rgba(0,0,0,.12);color:#5A5A5A;box-shadow:none;border-color:transparent;cursor:not-allowed}
+.btn-ghost{
+  background:var(--glass-hi);color:var(--ink);border:1px solid var(--edge);
+  box-shadow:0 4px 12px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.btn-ghost[disabled]{background:rgba(255,255,255,.35);color:#5A5A5A}
+.btn-light{background:rgba(255,255,255,.94);color:var(--ink);border-color:rgba(255,255,255,.9);box-shadow:none}
+.btn-sm{min-height:40px;padding:0 16px;font-size:13px}
+.btn-block{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>.btn{flex:1 1 120px}
+.back{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:40px;
+  padding:0 14px 0 10px;border-radius:20px;border:1px solid var(--edge);background:var(--glass-hi);font-weight:600;font-size:13px;
+}
+
+/* progress */
+.bar{height:8px;border-radius:4px;background:var(--track);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#3A3A3A,var(--ink))}
+
+/* statistik */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stat{border-radius:20px;padding:12px 10px;display:flex;flex-direction:column;gap:6px}
+.stat svg{display:block}
+.stat b{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:11px;line-height:1.3;color:var(--ink-2)}
+
+/* kartu gelap */
+.dark{
+  position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,rgba(44,44,44,.94),rgba(10,10,10,.96));
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 14px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.dark::before{
+  content:"";position:absolute;top:-70px;right:-50px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 70%);pointer-events:none;
+}
+.dark>*{position:relative}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#CFCFCF}
+.dark .meta{color:#CFCFCF;font-size:13px}
+.cta{flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}
+.cta .grow{flex:1 1 160px;display:flex;flex-direction:column;gap:3px}
+.cta .t{font-size:17px;font-weight:700;line-height:1.25}
+
+/* daftar bab */
+.listbtn{
+  width:100%;text-align:left;flex-direction:row;align-items:center;gap:12px;color:var(--ink);
+}
+.listbtn .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.listbtn .tt{font-weight:700;font-size:15px;line-height:1.3}
+.listbtn .ds{font-size:12px;color:var(--ink-2)}
+.num{
+  flex:none;width:44px;height:44px;border-radius:14px;border:1px solid var(--edge);
+  background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(210,210,210,.6));
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+  box-shadow:0 6px 14px rgba(0,0,0,.08), inset 0 1px 0 #fff;
+}
+
+.note{font-size:12px;color:var(--ink-2);line-height:1.5}
+
+/* soal */
+.qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+/* Transisi saat berpindah soal: kartu soal keluar sebentar, lalu masuk dari arah tujuan.
+   Hanya opacity dan transform yang dianimasikan agar tetap ringan di HP. */
+@keyframes qIn{from{opacity:0;transform:translate3d(var(--qx,18px),0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+.qsec.q-in-next{--qx:18px;animation:qIn .26s cubic-bezier(.22,.68,0,1) backwards;will-change:transform,opacity}
+.qsec.q-in-prev{--qx:-18px;animation:qIn .26s cubic-bezier(.22,.68,0,1) backwards;will-change:transform,opacity}
+.qsec.q-out-next,.qsec.q-out-prev{opacity:0;transition:opacity .11s ease-in,transform .11s ease-in;will-change:transform,opacity}
+.qsec.q-out-next{transform:translate3d(-12px,0,0)}
+.qsec.q-out-prev{transform:translate3d(12px,0,0)}
+#main.q-swap .qsec *{transition:none!important}
+@media(prefers-reduced-motion:reduce){.qsec.q-in-next,.qsec.q-in-prev{animation:none}.qsec.q-out-next,.qsec.q-out-prev{transition:none}.ov,.ov .sheet,.ov.is-closing,.ov.is-closing .sheet{animation:none!important}}
+/* Transisi halus untuk perubahan status (pilihan jawaban, progres, nomor soal, tombol kalkulator, dock) */
+html{scrollbar-gutter:stable}
+.opt{transition:background-color .22s ease,color .22s ease,border-color .22s ease,opacity .22s ease,transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,filter .18s ease}
+.opt .lt{transition:background-color .22s ease,color .22s ease,border-color .22s ease}
+.bar>i{transition:width .38s cubic-bezier(.22,.68,0,1)}
+.nb{transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s ease,filter .18s ease}
+.ck{transition:transform .12s cubic-bezier(.2,.8,.2,1),background-color .12s ease,box-shadow .12s ease,filter .12s ease}
+.cdisp .cd{transition:font-size .12s ease}
+.dock button{transition:background-color .25s ease,color .25s ease,transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,filter .18s ease}
+.ov{will-change:opacity}
+.ov .sheet{will-change:transform,opacity}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:0 12px;border-radius:14px;
+  background:var(--glass-hi);border:1px solid var(--edge);font-size:12px;font-weight:600;
+}
+.qtext{margin:0;font-size:17px;font-weight:700;line-height:1.4;text-wrap:pretty}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;min-height:52px;padding:12px 14px;border-radius:18px;
+  background:var(--glass-hi);border:1px solid var(--edge);
+  box-shadow:0 4px 12px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.9);
+  line-height:1.4;
+}
+.opt .lt{
+  flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin:0;
+}
+.opt .tx{flex:1;min-width:0}
+.opt .tag{display:block;margin-top:4px;font-size:12px;font-weight:700}
+.opt.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opt.sel .lt{border-color:#fff;background:#fff;color:var(--ink)}
+.opt.ok{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opt.ok .lt{border-color:#fff;background:#fff;color:var(--ink)}
+.opt.bad{background:rgba(255,255,255,.9);border:2px dashed var(--ink)}
+.opt.bad .tx>span:first-child{text-decoration:line-through;text-decoration-thickness:1.5px}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.og{display:flex;flex-direction:column;gap:8px}
+.ex{margin:0 4px;border-radius:14px;padding:10px 14px;background:var(--glass-hi);border:1px solid var(--edge);display:flex;flex-direction:column;gap:3px;font-size:13px;line-height:1.5}
+.ex.ok{border:1.5px solid var(--ink)}
+.ex.bad{border:1.5px dashed var(--ink)}
+.ex b{display:flex;align-items:center;gap:6px;font-size:13px}
+.ex p{margin:0}
+.fb{border-radius:18px;padding:14px;background:var(--glass-hi);border:1px solid var(--edge);display:flex;flex-direction:column;gap:4px}
+.fb b{font-size:15px;display:flex;align-items:center;gap:8px}
+.fb p{margin:0;line-height:1.55}
+
+/* ujian */
+.timer{
+  margin-left:auto;background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;
+}
+.timer[data-low="1"]{background:#fff;color:var(--ink);text-decoration:underline}
+.chip-btn{position:relative;cursor:pointer;color:var(--ink)}
+.chip-btn::after{content:"";position:absolute;inset:-8px -4px}
+.ctl{display:grid;grid-template-columns:56px minmax(0,1fr) 56px;gap:10px}
+.ctl .btn{padding:0;min-width:0}
+.btn-step{line-height:1}
+.btn-step svg{display:block;flex:none}
+.btn-ragu[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.nb{position:relative}
+.nb.ragu{background:#8C8C8C;border-color:#8C8C8C;color:#0A0A0A}
+.nb.ragu .l{color:#0A0A0A}
+.nb .n{font-size:15px}
+#overlay:empty{display:none}
+.ov{
+  position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;
+  padding:16px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px));
+  background:rgba(10,10,10,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  animation:popupBackdropIn .2s ease-out both;
+}
+@keyframes popupBackdropIn{from{opacity:0}to{opacity:1}}
+@keyframes popupSheetIn{from{opacity:0;transform:translate3d(0,18px,0) scale(.975)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+@keyframes popupSheetOut{from{opacity:1;transform:translate3d(0,0,0) scale(1)}to{opacity:0;transform:translate3d(0,10px,0) scale(.985)}}
+@keyframes popupBackdropOut{from{opacity:1}to{opacity:0}}
+.ov .sheet{animation:popupSheetIn .24s cubic-bezier(.2,.75,.25,1) both;transform-origin:center bottom}
+.ov.is-closing{pointer-events:none;animation:popupBackdropOut .17s ease-in both}
+.ov.is-closing .sheet{animation:popupSheetOut .17s ease-in both}
+.sheet{
+  width:100%;max-width:440px;max-height:calc(100% - 8px);overflow:auto;border-radius:24px;padding:16px;
+  display:flex;flex-direction:column;gap:12px;
+  background:rgba(255,255,255,.9);border:1px solid var(--edge);box-shadow:0 24px 60px rgba(0,0,0,.28);
+}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.iconbtn{
+  width:40px;height:40px;border-radius:20px;border:1px solid var(--edge);background:var(--glass-hi);color:var(--ink);
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.lg{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;border:1px solid rgba(0,0,0,.25);background:#fff;font-style:normal;font-weight:800;font-size:11px;color:var(--ink)}
+.lg-done{background:var(--ink);border-color:var(--ink);color:#fff}
+.lg-now{border:2.5px solid var(--ink)}
+.lg-ragu{background:#8C8C8C;border-color:#8C8C8C;color:#0A0A0A}
+.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:8px}
+.nb{
+  min-height:54px;border-radius:14px;border:1px solid var(--edge);background:var(--glass-hi);color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;padding:0;
+  font-variant-numeric:tabular-nums;
+}
+.nb .n{font-size:15px;font-weight:800}
+.nb .l{font-size:12px;font-weight:700;color:var(--ink-2)}
+.nb.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.nb.done .l{color:#fff}
+.chip-ico{padding:0;width:36px;justify-content:center}
+.chip-ico svg{display:block}
+.cdisp{border-radius:18px;padding:12px 16px;background:rgba(255,255,255,.7);border:1px solid var(--edge);display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:2px;min-height:84px;overflow:hidden}
+.cdisp .ce{font-size:13px;color:var(--ink-2);min-height:20px;max-width:100%;white-space:nowrap;overflow:hidden}
+.cdisp .cd{font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15;max-width:100%;white-space:nowrap;overflow:hidden}
+.ckeys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ck{height:52px;border-radius:16px;border:1px solid var(--edge);background:var(--glass-hi);color:var(--ink);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0;touch-action:manipulation;box-shadow:0 4px 12px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.9)}
+.ck svg{display:block}
+.ck.fn{background:rgba(0,0,0,.08)}
+.ck.op{background:linear-gradient(180deg,var(--dark-1),var(--dark-2));color:#fff;border-color:rgba(255,255,255,.18)}
+.ck:active{transform:scale(.96)}
+.nb.bad{background:rgba(255,255,255,.9);border:2px dashed var(--ink)}
+.sheet-h h2.h2{font-size:19px}
+.nb.now{border:3px solid var(--ink);box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.nb.done.now{box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--ink)}
+.confirm{border-radius:18px;padding:14px;background:rgba(255,255,255,.9);border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px}
+.confirm p{margin:0;line-height:1.5}
+ol.rules,ul.rules{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;line-height:1.5}
+
+/* hasil */
+.score{font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.score small{font-size:20px;font-weight:700;color:var(--ink-2);letter-spacing:0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.two .glass{border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:2px}
+.two b{font-size:26px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.two span{font-size:12px;color:var(--ink-2)}
+
+/* riwayat */
+.hist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.hist li{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--glass-hi);border:1px solid var(--edge);
+}
+.hist .hn{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.hist .hn b{font-size:13px}
+.hist .hn span{font-size:12px;color:var(--ink-2)}
+.hist .nv{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+/* penguasaan */
+.mast,.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.mrow{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:18px;background:var(--glass-hi);border:1px solid var(--edge)}
+.mtop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.mt{font-weight:700;font-size:14px;line-height:1.35;min-width:0}
+.mbot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pill{
+  flex:none;display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border-radius:12px;
+  font-size:11px;font-weight:700;white-space:nowrap;border:1.5px solid var(--ink);background:#fff;color:var(--ink);
+}
+.pill-kuasai{background:var(--ink);color:#fff}
+.pill-belum{border-style:dashed}
+.pill-data{border-color:rgba(0,0,0,.3);color:var(--ink-2);font-weight:600}
+.qlist li{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:18px;background:var(--glass-hi);border:1px solid var(--edge)}
+.qt{font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.qm{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+textarea{
+  width:100%;min-height:96px;resize:vertical;padding:12px;border-radius:16px;border:1px solid var(--edge);
+  background:rgba(255,255,255,.85);line-height:1.4;
+}
+.filebtn{position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.filebtn:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.empty{margin:0;padding:18px 8px;text-align:center;color:var(--ink-2);line-height:1.5}
+
+/* grafik */
+.chart{display:block;width:100%;height:auto}
+.chart .gl{stroke:rgba(0,0,0,.10);stroke-width:1}
+.chart text{font-family:var(--font);font-size:10px;fill:var(--ink-2)}
+.chart .ln{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.chart .pt{fill:#fff;stroke:var(--ink);stroke-width:2.5}
+.chart .pe{fill:var(--ink);stroke:#fff;stroke-width:2}
+.chart .tip{fill:var(--ink)}
+.chart text.tipt{fill:#fff;font-weight:700;font-size:11px}
+
+/* navigasi bawah */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  padding-left:max(14px, env(safe-area-inset-left, 0px));
+  padding-right:max(14px, env(safe-area-inset-right, 0px));
+  padding-bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  pointer-events:none;
+}
+.dock-bar{
+  pointer-events:auto;max-width:520px;margin:0 auto;height:68px;padding:0 8px;border-radius:32px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.62);
+  -webkit-backdrop-filter:blur(24px) saturate(130%);backdrop-filter:blur(24px) saturate(130%);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 12px 32px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.95);
+}
+.dock button{
+  flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:54px;margin:0 2px;padding:0;
+  border:0;border-radius:24px;background:transparent;color:var(--ink-2);font-size:11px;font-weight:600;
+}
+.dock button[aria-current="page"]{background:var(--ink);color:#fff;font-weight:700}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom, 0px));transform:translate(-50%,12px);z-index:30;
+  max-width:min(440px, calc(100vw - 32px));padding:12px 18px;border-radius:18px;background:var(--ink);color:#fff;
+  font-weight:600;font-size:13px;line-height:1.4;text-align:center;opacity:0;pointer-events:none;
+  transition:opacity .2s, transform .2s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.wel{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  padding:24px max(24px, env(safe-area-inset-right, 0px)) 24px max(24px, env(safe-area-inset-left, 0px))}
+.wel.fade{opacity:0;transition:opacity .25s ease}
+.wel-blur{position:absolute;inset:0;background:rgba(240,240,240,.42);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.wel-body{position:relative;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;
+  animation:welIn .7s cubic-bezier(.22,1,.36,1) backwards;transition:opacity .35s ease, transform .35s ease}
+.wel-body.out{opacity:0;transform:scale(.96);pointer-events:none}
+.wel-t{margin:0;font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.wel-btn{min-height:56px;padding:0 36px;font-size:17px;border-radius:28px}
+@keyframes welIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ldIn{from{opacity:0}to{opacity:1}}
+.ld .wel-blur{animation:ldIn .25s ease both}
+.ld-pct{font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.ld-bar{width:min(240px,64vw);height:8px;border-radius:4px;background:var(--track);overflow:hidden}
+.ld-bar i{display:block;height:100%;width:100%;border-radius:4px;background:var(--ink);transform:scaleX(0);transform-origin:left;will-change:transform}
+.ld-lbl{font-size:14px;font-weight:600;color:var(--ink-2)}
+@media (max-width:360px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .score{font-size:52px}
+}
+
+/* Efek interaksi universal untuk seluruh tombol, termasuk navigasi dan tombol dinamis */
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn){
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  cursor:pointer;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,filter .18s ease,background-color .18s ease;
+  transform-origin:center;
+}
+@media (hover:hover) and (pointer:fine){
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn):not([disabled]):not([aria-disabled="true"]):hover{
+  filter:brightness(1.08);
+  box-shadow:0 0 0 1px rgba(255,255,255,.22),0 0 16px rgba(255,255,255,.16);
+}
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn):not([disabled]):not([aria-disabled="true"]):active,
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn).ql-pressed{
+  transform:scale(.955);
+  filter:brightness(1.16);
+  box-shadow:0 0 0 2px rgba(255,255,255,.62),0 0 10px rgba(255,255,255,.42),0 0 24px rgba(255,255,255,.24);
+}
+:where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn):not([disabled]):not([aria-disabled="true"]):focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:reduce){
+  :where(button, input[type="button"], input[type="submit"], input[type="reset"], [role="button"], .btn, .back, .filebtn, .chip-btn){transition:none}
+}
+
+</style>
+<div class="bg" aria-hidden="true"></div>
+
+<div class="app">
+  <header class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></svg>
+    </div>
+    <div>
+      <div class="brand-name">QuizLearn</div>
+      <div class="brand-sub" id="mapel"></div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+</div>
+
+<nav class="dock" aria-label="Navigasi utama"><div class="dock-bar" id="dock"></div></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript>Website ini membutuhkan JavaScript. Aktifkan JavaScript di browser Anda.</noscript>
+<script>window.QL_CAN_DOWNLOAD = false;</script>
+<script>
+/*
+  DATA SOAL
+  Edit file ini untuk mengganti isi website. Tidak perlu mengubah file lain.
+
+  Aturan penulisan:
+  - "kunci" adalah nomor pilihan jawaban yang benar, dimulai dari 0
+    (0 = pilihan A, 1 = pilihan B, 2 = pilihan C, 3 = pilihan D).
+  - Setiap soal harus punya "id" yang berbeda.
+  - Setiap soal wajib punya tepat 4 pilihan.
+  - "jelas" adalah penjelasan jawaban yang benar. "jelasOpsi" (opsional) berisi 4 penjelasan,
+    satu per pilihan. Yang dipakai hanya penjelasan pilihan yang salah (isi pilihan benar boleh dikosongkan).
+  - Tanda kutip di dalam teks sebaiknya memakai tanda ' atau " yang diberi garis miring: \"
+*/
+window.QL_DATA = {
+  mapel: "Akuntansi Biaya",
+  kunciPenyimpanan: "pemjasa",   // kode singkat tanpa spasi; bedakan untuk tiap mata kuliah
+
+  pengaturan: {
+    ujianJumlahSoal: 60,   // jumlah soal dalam satu ujian (diambil acak dari semua bab)
+    ujianMenit: 60,        // durasi ujian dalam menit
+    penguasaan: {          // batas analisis di menu Progres (boleh dihapus untuk memakai nilai bawaan)
+      batasDikuasai: 80,   // persen benar minimal agar bab berstatus Dikuasai
+      batasCukup: 60,      // persen benar minimal agar bab berstatus Cukup
+      minJawabanBab: 5,    // jumlah jawaban minimal agar bab dinilai
+      minJawabanSoal: 2,   // soal dinilai setelah dijawab minimal sekian kali
+      batasSoalSalah: 50   // persen salah minimal agar soal masuk daftar "sering salah"
+    }
+  },
+
+  // Untuk menambah soal, tambahkan objek ke array "bab" dengan format berikut:
+  //
+  // bab: [
+  //   {
+  //     id: "bab1",
+  //     judul: "Bab 1. Judul Bab",
+  //     soal: [
+  //       {
+  //         id: "b1-1",
+  //         tanya: "Teks pertanyaan?",
+  //         opsi: ["Pilihan A", "Pilihan B", "Pilihan C", "Pilihan D"],
+  //         kunci: 1,
+  //         jelas: "Penjelasan mengapa jawaban yang benar itu benar.",
+  //         jelasOpsi: ["Mengapa A salah.", "", "Mengapa C salah.", "Mengapa D salah."]
+  //       }
+  //     ]
+  //   }
+  // ]
+  bab: [
+  {
+    "id": "bank-akuntansi-biaya",
+    "judul": "Bank Soal Akuntansi Biaya (69 Soal)",
+    "soal": [
+      {
+        "id": "akbi-1",
+        "tanya": "Karakteristik utama dari Akuntansi Manajemen yang membedakannya secara tegas dari Akuntansi Keuangan adalah...",
+        "opsi": [
+          "Berorientasi pada masa depan untuk perencanaan internal.",
+          "Wajib mematuhi Standar Akuntansi Keuangan (SAK).",
+          "Menekankan pada pelaporan aspek historis entitas total.",
+          "Ditujukan terutama untuk investor dan otoritas pajak."
+        ],
+        "kunci": 0,
+        "jelas": "Akuntansi manajemen digunakan oleh pihak internal untuk merencanakan, mengendalikan, dan mengambil keputusan. Informasinya berorientasi pada kebutuhan manajemen, termasuk perencanaan masa depan."
+      },
+      {
+        "id": "akbi-2",
+        "tanya": "Biaya penolong (indirect materials) dan upah mandor pabrik di dalam klasifikasi kos manufaktur dikelompokkan sebagai...",
+        "opsi": [
+          "Kos Komersial Periode",
+          "Kos Variabel Murni",
+          "Kos Overhead Pabrik (KOP)",
+          "Kos Utama (Prime Cost)"
+        ],
+        "kunci": 2,
+        "jelas": "Bahan penolong dan upah mandor mendukung produksi, tetapi tidak dapat ditelusuri secara ekonomis ke produk tertentu. Karena itu, keduanya termasuk Kos Overhead Pabrik (KOP)."
+      },
+      {
+        "id": "akbi-3",
+        "tanya": "Manakah dari item berikut yang merupakan objek kos (cost object) paling tepat bagi manajer produksi?",
+        "opsi": [
+          "Satu unit produk atau batch pesanan spesifik.",
+          "Jumlah dividen yang dibayarkan ke pemegang saham.",
+          "Kantor pusat administrasi perusahaan.",
+          "Tarif pajak penghasilan badan tahun berjalan."
+        ],
+        "kunci": 0,
+        "jelas": "Objek kos adalah sesuatu yang ingin diukur biayanya, seperti produk, pesanan, atau batch. Manajer dapat menghitung kos untuk satu unit maupun satu kelompok produk."
+      },
+      {
+        "id": "akbi-4",
+        "tanya": "Kos prima (prime cost) terdiri dari penjumlahan antara...",
+        "opsi": [
+          "Kos Produksi dan Kos Pemasaran.",
+          "Bahan Baku Langsung dan Kos Overhead Pabrik.",
+          "Bahan Baku Langsung dan Tenaga Kerja Langsung.",
+          "Tenaga Kerja Langsung dan Kos Overhead Pabrik."
+        ],
+        "kunci": 2,
+        "jelas": "Kos prima (prime cost) terdiri atas bahan baku langsung dan tenaga kerja langsung. Kedua unsur tersebut dapat ditelusuri langsung ke produk."
+      },
+      {
+        "id": "akbi-5",
+        "tanya": "Biaya yang dapat ditelusuri secara mudah, akurat, dan ekonomis ke suatu objek kos disebut sebagai...",
+        "opsi": [
+          "Kos Langsung (Direct Cost)",
+          "Kos Terbenam (Sunk Cost)",
+          "Kos Tidak Langsung (Indirect Cost)",
+          "Kos Bersama (Joint Cost)"
+        ],
+        "kunci": 0,
+        "jelas": "Kos langsung dapat diidentifikasi dan ditelusuri secara mudah serta ekonomis ke objek kos tertentu, misalnya kain yang khusus digunakan untuk satu model pakaian."
+      },
+      {
+        "id": "akbi-6",
+        "tanya": "Ciri utama dari kos tetap (fixed cost) jika ditinjau dari aspek per unit produk adalah...",
+        "opsi": [
+          "Nilai per unitnya meningkat seiring kenaikan volume.",
+          "Nilai per unitnya menurun seiring dengan kenaikan volume aktivitas.",
+          "Nilai totalnya selalu berubah secara proporsional.",
+          "Nilai per unitnya konstan tidak berubah."
+        ],
+        "kunci": 1,
+        "jelas": "Kos tetap total relatif tidak berubah dalam rentang relevan. Ketika volume aktivitas meningkat, kos tetap per unit turun karena total kos tetap dibagi ke lebih banyak unit."
+      },
+      {
+        "id": "akbi-7",
+        "tanya": "PT. Delta mencatat biaya listrik tertinggi Rp30.000.000 pada aktivitas 10.000 jam, dan terendah Rp18.000.000 pada aktivitas 4.000 jam. Tarif kos variabel per jam adalah...",
+        "opsi": [
+          "Rp1.200 per jam",
+          "Rp3.000 per jam",
+          "Rp4.500 per jam",
+          "Rp2.000 per jam"
+        ],
+        "kunci": 3,
+        "jelas": "Metode high-low: (Rp30.000.000 − Rp18.000.000) ÷ (10.000 − 4.000 jam) = Rp2.000 per jam. Selisih biaya dibagi selisih aktivitas menghasilkan estimasi tarif variabel."
+      },
+      {
+        "id": "akbi-8",
+        "tanya": "PT. Delta mencatat biaya listrik tertinggi Rp30.000.000 pada aktivitas 10.000 jam, dan terendah Rp18.000.000 pada aktivitas 4.000 jam, berapakah total kos tetap per bulan untuk biaya listrik tersebut?",
+        "opsi": [
+          "Rp10.000.000",
+          "Rp15.000.000",
+          "Rp8.000.000",
+          "Rp12.000.000"
+        ],
+        "kunci": 0,
+        "jelas": "Kos tetap = total kos − (tarif variabel × aktivitas). Rp30.000.000 − (Rp2.000 × 10.000 jam) = Rp10.000.000 per bulan."
+      },
+      {
+        "id": "akbi-9",
+        "tanya": "Aktivitas yang mengonsumsi sumber daya tetapi tidak memberikan kontribusi pada peningkatan nilai guna produk di mata konsumen disebut...",
+        "opsi": [
+          "Core manufacturing activities",
+          "Value-added activities",
+          "Mixed capacity activities",
+          "Non-value-added activities"
+        ],
+        "kunci": 3,
+        "jelas": "Non-value-added activities mengonsumsi sumber daya tanpa menambah nilai yang diharapkan pelanggan, misalnya waktu menunggu, pemindahan yang tidak perlu, atau pengerjaan ulang."
+      },
+      {
+        "id": "akbi-10",
+        "tanya": "Batasan volume aktivitas di mana asumsi perilaku kos variabel dan kos tetap berlaku secara konstan dinamakan...",
+        "opsi": [
+          "Margin of safety",
+          "Relevant range (Rentang Relevan)",
+          "Break-even range",
+          "Production run limit"
+        ],
+        "kunci": 1,
+        "jelas": "Rentang relevan adalah tingkat aktivitas ketika asumsi perilaku kos tetap dan kos variabel masih berlaku. Di luar rentang ini, biaya dapat berubah karena kebutuhan kapasitas tambahan."
+      },
+      {
+        "id": "akbi-11",
+        "tanya": "Siklus usaha yang kegiatannya membeli bahan baku, mengolahnya di pabrik, dan menjual produk jadi merupakan karakteristik dari...",
+        "opsi": [
+          "Perusahaan Manufaktur",
+          "Perusahaan Jasa",
+          "Perusahaan Dagang",
+          "Perusahaan Distribusi"
+        ],
+        "kunci": 0,
+        "jelas": "Perusahaan manufaktur membeli bahan baku, mengolahnya melalui proses produksi, lalu menjual produk jadi. Aktivitas pengolahan merupakan ciri utama manufaktur."
+      },
+      {
+        "id": "akbi-12",
+        "tanya": "Akun tempat menampung akumulasi biaya bahan baku, tenaga kerja langsung, dan overhead yang sedang diolah di pabrik dinamakan...",
+        "opsi": [
+          "Kos Produk Terjual (COGS)",
+          "Kos Dalam Proses (KDP) / Work in Process",
+          "Persediaan Bahan Baku",
+          "Persediaan Produk Jadi"
+        ],
+        "kunci": 1,
+        "jelas": "Kos Dalam Proses (KDP) menampung biaya bahan baku langsung, tenaga kerja langsung, dan overhead untuk produk yang belum selesai. Setelah selesai, kos dipindahkan ke persediaan produk jadi."
+      },
+      {
+        "id": "akbi-13",
+        "tanya": "Laporan internal manufaktur yang menyajikan ringkasan total biaya barang yang berhasil diselesaikan selama suatu periode dinamakan...",
+        "opsi": [
+          "Laporan Laba Rugi Komersial",
+          "Neraca Sediaan Manufaktur",
+          "Laporan Kos Produk Terjual",
+          "Laporan Kos Produksi (Cost of Goods Manufactured Statement)"
+        ],
+        "kunci": 3,
+        "jelas": "Laporan Kos Produksi merangkum biaya barang yang diselesaikan dalam suatu periode. Perhitungan memperhatikan kos produksi serta perubahan persediaan produk dalam proses."
+      },
+      {
+        "id": "akbi-14",
+        "tanya": "Sistem kos yang membebankan biaya aktual untuk elemen bahan baku langsung dan tenaga kerja langsung, namun menggunakan tarif estimasi untuk overhead dinamakan...",
+        "opsi": [
+          "Sistem Kos Aktual",
+          "Sistem Kos Variabel",
+          "Sistem Kos Standar",
+          "Sistem Kos Normal"
+        ],
+        "kunci": 3,
+        "jelas": "Sistem kos normal menggunakan biaya aktual bahan baku langsung dan tenaga kerja langsung, sedangkan overhead dibebankan menggunakan tarif yang ditentukan sebelumnya berdasarkan estimasi."
+      },
+      {
+        "id": "akbi-15",
+        "tanya": "Perusahaan konstruksi jembatan atau industri pembuatan pesawat terbang mengumpulkan kos produksinya menggunakan metode akumulasi...",
+        "opsi": [
+          "Metode Akumulasi Kos Berdasarkan Proses",
+          "Metode Sediaan Backflush",
+          "Metode Operasi Bersama",
+          "Metode Akumulasi Kos Berdasarkan Pesanan (Job Order Costing)"
+        ],
+        "kunci": 3,
+        "jelas": "Job order costing mengakumulasi kos secara terpisah untuk setiap pesanan. Metode ini cocok untuk produk atau pekerjaan yang spesifik, seperti konstruksi jembatan dan pesawat pesanan."
+      },
+      {
+        "id": "akbi-16",
+        "tanya": "Dokumen utama yang bertindak sebagai buku besar pembantu untuk mengumpulkan semua elemen biaya produksi per jenis pesanan dinamakan...",
+        "opsi": [
+          "Kartu Absen Jam Kerja",
+          "Laporan Kuantitas Produksi",
+          "Kartu Kos Pesanan (Job Cost Sheet)",
+          "Bukti Permintaan Bahan Gudang"
+        ],
+        "kunci": 2,
+        "jelas": "Kartu kos pesanan mencatat bahan baku langsung, tenaga kerja langsung, dan overhead untuk tiap pesanan. Dokumen ini membantu menghitung total kos pekerjaan."
+      },
+      {
+        "id": "akbi-17",
+        "tanya": "Ketika bahan baku langsung dikeluarkan dari gudang untuk masuk ke nomor pesanan tertentu, pencatatan jurnal yang benar adalah...",
+        "opsi": [
+          "Debit: Kos Dalam Proses; Kredit: Persediaan Bahan Baku",
+          "Debit: Kos Overhead Pabrik Aktual; Kredit: Persediaan Bahan Baku",
+          "Debit: Kos Produk Terjual; Kredit: Kos Dalam Proses",
+          "Debit: Persediaan Bahan Baku; Kredit: Kos Dalam Proses"
+        ],
+        "kunci": 0,
+        "jelas": "Ketika bahan baku langsung digunakan, KDP didebit dan persediaan bahan baku dikredit. Pencatatan ini menunjukkan perpindahan bahan dari gudang ke produksi."
+      },
+      {
+        "id": "akbi-18",
+        "tanya": "Diketahui data Pesanan #01: Bahan Baku Langsung Rp5.000.000, Tenaga Kerja Langsung Rp3.000.000. Jika KOP dibebankan tarif 50% dari biaya tenaga kerja langsung, maka total kos produksinya adalah...",
+        "opsi": [
+          "Rp12.000.000",
+          "Rp9.500.000",
+          "Rp8.000.000",
+          "Rp10.500.000"
+        ],
+        "kunci": 1,
+        "jelas": "Overhead = 50% × Rp3.000.000 = Rp1.500.000. Total kos produksi = Rp5.000.000 + Rp3.000.000 + Rp1.500.000 = Rp9.500.000."
+      },
+      {
+        "id": "akbi-19",
+        "tanya": "Jika nilai KOP yang dibebankan ke produk lebih besar daripada nilai KOP aktual yang sesungguhnya terjadi, akun overhead mengalami...",
+        "opsi": [
+          "Underapplied overhead",
+          "Overapplied overhead",
+          "Actual variance profit",
+          "Standard cost deficit"
+        ],
+        "kunci": 1,
+        "jelas": "Overapplied overhead terjadi jika overhead yang dibebankan ke produk lebih besar daripada overhead aktual. Jika pembebanan lebih kecil daripada biaya aktual, kondisinya disebut underapplied."
+      },
+      {
+        "id": "akbi-20",
+        "tanya": "Di akhir periode, selisih overapplied overhead yang jumlahnya tidak material (kecil) idealnya ditutup langsung ke akun...",
+        "opsi": [
+          "Kos Produk Terjual (COGS)",
+          "Kas dan Bank",
+          "Persediaan Bahan Baku",
+          "Laba Ditahan Perusahaan"
+        ],
+        "kunci": 0,
+        "jelas": "Selisih overhead yang tidak material umumnya ditutup ke Kos Produk Terjual (COGS). Overapplied mengurangi COGS, sedangkan underapplied menambah COGS."
+      },
+      {
+        "id": "akbi-21",
+        "tanya": "Karakteristik industri yang tepat dalam menerapkan sistem akumulasi kos berdasarkan proses (process costing) adalah...",
+        "opsi": [
+          "Pabrik semen dan produsen minuman kemasan massal.",
+          "Studio seni patung pahat pesanan.",
+          "Perusahaan karoseri bus kustom dan kantor konsultan hukum.",
+          "Industri pembuatan kapal yacht mewah."
+        ],
+        "kunci": 0,
+        "jelas": "Process costing sesuai untuk produksi massal yang menghasilkan produk homogen secara berulang. Biaya dikumpulkan per proses atau departemen, kemudian dirata-ratakan per unit."
+      },
+      {
+        "id": "akbi-22",
+        "tanya": "Pengertian dari konsep \"Unit Ekuivalen\" dalam laporan kos produksi metode proses adalah...",
+        "opsi": [
+          "Jumlah fisik seluruh produk yang gagal dalam proses.",
+          "Total volume bahan baku yang tersisa di gudang penyimpanan.",
+          "Penyetaraan unit produk setengah jadi menjadi unit produk selesai berdasarkan tingkat penyerapannya.",
+          "Rasio pembagian keuntungan antar departemen produksi."
+        ],
+        "kunci": 2,
+        "jelas": "Unit ekuivalen menyetarakan produk dalam proses dengan unit produk selesai berdasarkan tingkat penyelesaian. Persentase penyelesaian dapat berbeda antara bahan dan biaya konversi."
+      },
+      {
+        "id": "akbi-23",
+        "tanya": "Departemen B menyelesaikan 5.000 unit produk jadi dan menyisakan 1.000 unit WIP akhir (tingkat penyelesaian kos konversi 40%). Unit ekuivalen konversinya adalah...",
+        "opsi": [
+          "5.000 unit",
+          "6.000 unit",
+          "5.400 unit",
+          "4.600 unit"
+        ],
+        "kunci": 2,
+        "jelas": "Unit ekuivalen konversi = 5.000 unit selesai + (1.000 × 40%) = 5.400 unit. Unit dalam proses dihitung berdasarkan tingkat penyelesaian konversinya."
+      },
+      {
+        "id": "akbi-24",
+        "tanya": "Jurnal yang dibuat saat mencatat transfer produk selesai dari Departemen Pencampuran (Dep 1) ke Departemen Penyelesaian (Dep 2) adalah...",
+        "opsi": [
+          "Debit: Kos Produk Terjual; Kredit: Persediaan Produk Jadi",
+          "Debit: Kos Dalam Proses - Dep 2; Kredit: Kos Dalam Proses - Dep 1",
+          "Debit: Kos Dalam Proses - Dep 1; Kredit: Kos Dalam Proses - Dep 2",
+          "Debit: Persediaan Produk Jadi; Kredit: Kos Dalam Proses - Dep 1"
+        ],
+        "kunci": 1,
+        "jelas": "Produk yang selesai di Departemen 1 ditransfer ke Departemen 2 bersama biaya yang melekat. Debit KDP Departemen 2 dan kredit KDP Departemen 1 mencatat transfer tersebut."
+      },
+      {
+        "id": "akbi-25",
+        "tanya": "Apa dampak akuntansi jika penambahan bahan baku pada departemen lanjutan meningkatkan jumlah kuantitas fisik unit produk?",
+        "opsi": [
+          "Total biaya dari departemen sebelumnya otomatis hangus.",
+          "Menghentikan perhitungan unit ekuivalen konversi.",
+          "Menurunkan kos per unit asal departemen sebelumnya (efek pengenceran biaya).",
+          "Menaikkan nilai kos per unit secara drastis."
+        ],
+        "kunci": 2,
+        "jelas": "Ketika jumlah unit meningkat tanpa penambahan kos dari departemen sebelumnya, kos terdahulu dibagi ke lebih banyak unit. Akibatnya, kos per unit dari departemen sebelumnya menurun (cost dilution)."
+      },
+      {
+        "id": "akbi-26",
+        "tanya": "Pengeluaran untuk melakukan kegiatan kalibrasi mesin preventif dan pelatihan mutu karyawan dalam akuntansi kos kualitas dimasukkan sebagai...",
+        "opsi": [
+          "Kos Kegagalan Internal",
+          "Kos Pencegahan (Prevention Costs)",
+          "Kos Penilaian (Appraisal Costs)",
+          "Kos Kegagalan Eksternal"
+        ],
+        "kunci": 1,
+        "jelas": "Kos pencegahan dikeluarkan untuk mencegah masalah mutu sebelum terjadi, misalnya kalibrasi preventif, pelatihan, dan perbaikan proses."
+      },
+      {
+        "id": "akbi-27",
+        "tanya": "Pengeluaran berupa penyelesaian klaim garansi produk bocor dan penanganan keluhan pelanggan dikelompokkan ke dalam...",
+        "opsi": [
+          "Kos Kegagalan Eksternal (External Failure Costs)",
+          "Kos Penilaian",
+          "Kos Kegagalan Internal",
+          "Kos Deteksi Dini"
+        ],
+        "kunci": 0,
+        "jelas": "Kos kegagalan eksternal timbul setelah produk sampai kepada pelanggan, seperti klaim garansi, penggantian produk, dan penanganan keluhan."
+      },
+      {
+        "id": "akbi-28",
+        "tanya": "Dalam job order costing, jika produk cacat terjadi akibat spesifikasi pesanan pelanggan yang sangat rumit, maka kos pengerjaan ulang (rework) diperlakukan dengan...",
+        "opsi": [
+          "Dibebankan langsung menambah kos pesanan spesifik yang bersangkutan.",
+          "Ditagihkan langsung kepada operator yang lalai.",
+          "Dihapusbukukan sebagai kerugian periode non-pabrik.",
+          "Dibebankan ke Kos Overhead Pabrik Aktual secara umum."
+        ],
+        "kunci": 0,
+        "jelas": "Jika pengerjaan ulang terjadi karena spesifikasi khusus pelanggan, kos rework yang dapat ditelusuri ke pesanan tersebut dibebankan pada kos pesanan terkait."
+      },
+      {
+        "id": "akbi-29",
+        "tanya": "Berdasarkan metode proses, apabila sejumlah unit terdeteksi hilang pada awal proses produksi, bagaimanakah perlakuan perhitungannya?",
+        "opsi": [
+          "Dihitung menggunakan tingkat penyelesaian rata-rata 50%.",
+          "Diabaikan atau dikeluarkan dari perhitungan unit ekuivalen departemen bersangkutan.",
+          "Ditambahkan ke sediaan bahan baku gudang utama.",
+          "Dihitung penuh 100% di unit ekuivalen konversi."
+        ],
+        "kunci": 1,
+        "jelas": "Unit yang hilang pada awal proses umumnya tidak menyerap biaya konversi melalui unit ekuivalen. Perlakuan kehilangan tetap bergantung pada sifat dan waktu terjadinya kehilangan."
+      },
+      {
+        "id": "akbi-30",
+        "tanya": "Pengurangan volume fisik produk akibat faktor alamiah penguapan cairan atau penciutan zat kimia sepanjang proses pabrikasi disebut...",
+        "opsi": [
+          "Produk Cacat Operasional",
+          "Produk Hilang atau Menyusut (Shrinkage)",
+          "Produk Rusak Komersial",
+          "Produk Sampingan Utama"
+        ],
+        "kunci": 1,
+        "jelas": "Shrinkage adalah berkurangnya kuantitas bahan atau produk selama proses, misalnya akibat penguapan atau penyusutan alami. Kehilangan ini perlu dipantau dalam pengendalian produksi."
+      },
+      {
+        "id": "akbi-31",
+        "tanya": "Pengolahan susu segar secara bersamaan menghasilkan krim dan skim cair yang keduanya memiliki nilai jual signifikan. Dua produk ini diklasifikasikan sebagai...",
+        "opsi": [
+          "Produk Sunk Cost",
+          "Produk Terdiskon",
+          "Produk Bersama (Joint Product)",
+          "Produk Sampingan (By-Product)"
+        ],
+        "kunci": 2,
+        "jelas": "Produk bersama dihasilkan dari proses atau bahan baku yang sama dan masing-masing memiliki nilai jual signifikan, misalnya krim dan skim dari pengolahan susu."
+      },
+      {
+        "id": "akbi-32",
+        "tanya": "Fase operasional produksi di mana produk-produk utama dan sampingan mulai dapat diidentifikasi secara fisik terpisah dinamakan...",
+        "opsi": [
+          "Split-off point (Titik Pisah-Batas)",
+          "Relevant range capacity",
+          "Production run start",
+          "Break-even limit point"
+        ],
+        "kunci": 0,
+        "jelas": "Split-off point adalah titik ketika produk hasil proses bersama mulai dapat diidentifikasi secara terpisah. Setelah titik ini, biaya tambahan tiap produk dapat ditelusuri sebagai kos terpisah."
+      },
+      {
+        "id": "akbi-33",
+        "tanya": "Biaya yang dialokasikan ke produk utama yang terjadi sebelum split-off point menggunakan faktor internal penyerapan manufaktur disebut...",
+        "opsi": [
+          "Kos Pemasaran Fleksibel",
+          "Kos Bersama (Joint Cost)",
+          "Kos Periode Tetap",
+          "Kos Terpisah (Separable Cost)"
+        ],
+        "kunci": 1,
+        "jelas": "Kos bersama adalah biaya proses sebelum titik pisah yang menghasilkan beberapa produk. Biaya ini perlu dialokasikan ke produk bersama menggunakan metode yang sesuai."
+      },
+      {
+        "id": "akbi-34",
+        "tanya": "Metode alokasi kos bersama yang membagi biaya berdasarkan proporsi volume fisik, berat, atau kuantitas output dinamakan...",
+        "opsi": [
+          "Metode Rata-Rata Biaya Tetap",
+          "Metode Nilai Pasar Bersih (NRV)",
+          "Metode Nilai Jual Relatif",
+          "Metode Unit Fisik (Physical Unit Method)"
+        ],
+        "kunci": 3,
+        "jelas": "Metode unit fisik mengalokasikan kos bersama berdasarkan ukuran kuantitas, seperti jumlah unit, berat, atau volume produk yang dihasilkan."
+      },
+      {
+        "id": "akbi-35",
+        "tanya": "Jika pendapatan penjualan produk sampingan dicatat langsung tanpa alokasi biaya sebagai akun \"Pendapatan Lain-lain\", perusahaan memakai...",
+        "opsi": [
+          "Metode Pendapatan Kotor (Gross Revenue Method)",
+          "Metode Pembalikan Kos",
+          "Metode Pendapatan Bersih",
+          "Metode Alokasi Simultan"
+        ],
+        "kunci": 0,
+        "jelas": "Gross revenue method mencatat pendapatan penjualan produk sampingan sebagai pendapatan lain-lain tanpa mengurangi kos produksi utama melalui alokasi biaya."
+      },
+      {
+        "id": "akbi-36",
+        "tanya": "Diketahui kebutuhan bahan baku setahun 16.000 unit, kos pemesanan Rp200.000 per order, kos penyimpanan Rp4.000 per unit/tahun. KPE (EOQ) bernilai...",
+        "opsi": [
+          "500 unit",
+          "4.000 unit",
+          "1.000 unit",
+          "2.000 unit"
+        ],
+        "kunci": 2,
+        "jelas": "EOQ = √(2DS/H) = √(2 × 16.000 × Rp200.000 ÷ Rp4.000) ≈ 1.265 unit. Hasil perhitungan tidak sama dengan opsi yang tersedia maupun kunci C (1.000 unit), sehingga kunci soal perlu diperiksa."
+      },
+      {
+        "id": "akbi-37",
+        "tanya": "Semua biaya pengadaan bahan baku hingga siap pakai (biaya angkut, asuransi logistik, bongkar muat) diperlakukan akuntansi sebagai...",
+        "opsi": [
+          "Kerugian Penurunan Nilai Sediaan",
+          "Kos Overhead Pabrik Aktual tahunan",
+          "Beban Penjualan Operasional",
+          "Komponen penambah nilai kos perolehan sediaan bahan baku"
+        ],
+        "kunci": 3,
+        "jelas": "Biaya angkut, asuransi, dan bongkar muat yang diperlukan untuk memperoleh bahan hingga siap digunakan merupakan biaya perolehan persediaan dan menambah kos bahan baku."
+      },
+      {
+        "id": "akbi-38",
+        "tanya": "Sistem manajemen sediaan modern yang bertujuan mengeliminasi kos gudang dengan menjadwalkan kedatangan bahan baku tepat saat produksi dimulai dinamakan...",
+        "opsi": [
+          "Materials Requirement Planning (MRP)",
+          "Economic Order Quantity System",
+          "ABC Sediaan Inventory Model",
+          "Just-In-Time (JIT) Inventory System"
+        ],
+        "kunci": 3,
+        "jelas": "Just-In-Time (JIT) mengupayakan bahan datang ketika dibutuhkan dalam produksi. Tujuannya mengurangi persediaan dan biaya penyimpanan, dengan memerlukan koordinasi pemasok dan jadwal yang baik."
+      },
+      {
+        "id": "akbi-39",
+        "tanya": "Upah yang tetap dibayarkan kepada buruh ketika mesin pabrik macet total atau karena keterlambatan pasokan logistik diklasifikasikan sebagai...",
+        "opsi": [
+          "Kos Tenaga Kerja Langsung Riil",
+          "Kos Waktu Menganggur (Idle Time Cost) bagian KOP Aktual",
+          "Bonus Insentif Prestasi Kelompok",
+          "Biaya Komersial Administrasi Umum"
+        ],
+        "kunci": 1,
+        "jelas": "Upah saat pekerja tidak dapat berproduksi karena mesin rusak atau pasokan terlambat merupakan biaya waktu menganggur (idle time). Waktu menganggur terkait produksi umumnya dicatat sebagai overhead pabrik."
+      },
+      {
+        "id": "akbi-40",
+        "tanya": "Manakah di antara komponen pengeluaran berikut yang tidak termasuk dalam elemen kos tenaga kerja manufaktur?",
+        "opsi": [
+          "Premi asuransi kecelakaan kerja buruh las.",
+          "Tunjangan lembur operator lini perakitan.",
+          "Komisi penjualan untuk staf divisi pemasaran produk jadi.",
+          "Gaji pokok bulanan mandor pengawas produksi."
+        ],
+        "kunci": 2,
+        "jelas": "Komisi penjualan merupakan biaya pemasaran, bukan elemen kos tenaga kerja manufaktur. Kos tenaga kerja manufaktur meliputi tenaga kerja produksi langsung maupun tidak langsung."
+      },
+      {
+        "id": "akbi-41",
+        "tanya": "Di antara pilihan berikut, manakah item yang seluruhnya dikategorikan sebagai Kos Overhead Pabrik (KOP)?",
+        "opsi": [
+          "Biaya iklan media cetak dan gaji direktur keuangan korporat.",
+          "Gaji operator utama mesin bubut dan baja lembaran baku.",
+          "Penyusutan gedung pabrik, gaji satpam pabrik, dan bahan penolong oli mesin.",
+          "Kain sutra asli, upah penjahit kustom, dan kancing hias."
+        ],
+        "kunci": 2,
+        "jelas": "Penyusutan gedung pabrik, gaji satpam pabrik, dan oli penolong mesin mendukung produksi tetapi tidak ditelusuri langsung ke produk; semuanya termasuk overhead pabrik."
+      },
+      {
+        "id": "akbi-42",
+        "tanya": "PT Sejahtera mengestimasi total KOP Rp240.000.000 dengan basis aktivitas Jam Kerja Mesin sebanyak 60.000 jam. Tarif KOP ditentukan di awal adalah...",
+        "opsi": [
+          "Rp8.000 per jam mesin",
+          "Rp2.000 per jam mesin",
+          "Rp6.000 per jam mesin",
+          "Rp4.000 per jam mesin"
+        ],
+        "kunci": 3,
+        "jelas": "Tarif KOP ditentukan di muka = estimasi overhead ÷ estimasi basis aktivitas = Rp240.000.000 ÷ 60.000 jam = Rp4.000 per jam mesin."
+      },
+      {
+        "id": "akbi-43",
+        "tanya": "Mengapa biaya overhead yang terjadi di Departemen Jasa harus dialokasikan ke Departemen Produksi?",
+        "opsi": [
+          "Sesuai regulasi undang-undang eksternal perpajakan badan.",
+          "Agar departemen jasa terlihat tidak memiliki pengeluaran.",
+          "Karena pada akhirnya, hanya departemen produksi yang langsung memproses produk untuk menyerap biaya.",
+          "Untuk menaikkan bonus kinerja manajer departemen jasa."
+        ],
+        "kunci": 2,
+        "jelas": "Kos departemen jasa dialokasikan ke departemen produksi agar biaya dukungan turut masuk ke kos produk melalui proses produksi."
+      },
+      {
+        "id": "akbi-44",
+        "tanya": "Sistem penetapan kos konvensional prosedur dua tahap membebankan biaya overhead pada tahap kedua ke produk menggunakan...",
+        "opsi": [
+          "Pemicu biaya berbasis volume atau unit seperti JKL atau Jam Mesin.",
+          "Jumlah batch dokumen pesanan pembelian.",
+          "Pemicu non-volume transaksi seperti jumlah setup mesin.",
+          "Tingkat kepuasan kualitatif pelanggan eksternal."
+        ],
+        "kunci": 0,
+        "jelas": "Dalam sistem konvensional dua tahap, overhead dialokasikan ke produk pada tahap kedua menggunakan basis terkait volume, seperti jam tenaga kerja langsung atau jam mesin."
+      },
+      {
+        "id": "akbi-45",
+        "tanya": "Di dalam hierarki biaya sistem ABC, aktivitas penyetelan mesin (setup) yang dinikmati kelompok produk dimasukkan sebagai...",
+        "opsi": [
+          "Batch-level activities (Aktivitas Tingkat Batch)",
+          "Product-sustaining activities",
+          "Facility-sustaining activities",
+          "Unit-level activities"
+        ],
+        "kunci": 0,
+        "jelas": "Setup mesin melayani satu kelompok atau batch produk, bukan tiap unit secara individual. Karena itu, aktivitas setup termasuk batch-level."
+      },
+      {
+        "id": "akbi-46",
+        "tanya": "Dalam pabrik pembuatan pakaian (konveksi), manakah di antara item berikut yang dikategorikan sebagai Kos Langsung (Direct Cost) jika yang menjadi objek kosnya adalah \"Kemeja Model A\"?",
+        "opsi": [
+          "Biaya kain katun yang digunakan secara khusus untuk menjahit Kemeja Model A.",
+          "Gaji manajer pabrik yang mengawasi seluruh lini produksi.",
+          "Biaya listrik untuk penerangan ruangan pabrik.",
+          "Biaya penyusutan gedung pabrik tempat kemeja tersebut diproduksi."
+        ],
+        "kunci": 0,
+        "jelas": "Biaya kain yang digunakan khusus untuk Kemeja Model A dapat ditelusuri ke produk tersebut, sehingga merupakan kos langsung. Biaya fasilitas dan pengawasan umum pabrik merupakan kos tidak langsung."
+      },
+      {
+        "id": "akbi-47",
+        "tanya": "PT Grafika Utama menerima pesanan cetak undangan pernikahan (Pesanan #10). Manakah di antara komponen biaya berikut yang diperlakukan sebagai Kos Tenaga Kerja Langsung untuk pesanan tersebut?",
+        "opsi": [
+          "Gaji manajer divisi percetakan yang mengawasi jalannya seluruh pesanan pabrik.",
+          "Biaya komisi tim penjualan yang berhasil mendapatkan kontrak Pesanan.",
+          "Gaji staf administrasi kantor yang mencatat pembukuan pesanan.",
+          "Upah per jam yang dibayarkan kepada operator mesin cetak khusus saat mengerjakan Pesanan."
+        ],
+        "kunci": 3,
+        "jelas": "Upah operator yang bekerja langsung mencetak undangan Pesanan #10 dapat ditelusuri ke pesanan tersebut, sehingga termasuk tenaga kerja langsung. Gaji manajer dan administrasi merupakan biaya tidak langsung."
+      },
+      {
+        "id": "akbi-48",
+        "tanya": "PT Mahakarya menyelesaikan sebuah pesanan berupa 50 unit seragam batik kustom (Pesanan #B2). Total biaya produksi yang diakumulasikan hingga pesanan selesai adalah sebesar Rp7.500.000. Berapakah kos produksi per unit untuk seragam batik tersebut?",
+        "opsi": [
+          "Rp500.000 per unit",
+          "Rp150.000 per unit",
+          "Rp250.000 per unit",
+          "Rp375.000 per unit"
+        ],
+        "kunci": 1,
+        "jelas": "Kos per unit = total kos pesanan ÷ jumlah unit = Rp7.500.000 ÷ 50 = Rp150.000 per seragam."
+      },
+      {
+        "id": "akbi-49",
+        "tanya": "Laporan Kos Produksi merupakan dokumen pertanggungjawaban biaya yang disusun melalui empat langkah utama secara sistematis. Manakah di antara pilihan berikut yang menunjukkan urutan Langkah Pertama dan Langkah Kedua secara benar?",
+        "opsi": [
+          "Langkah 1: Pertanggungjawaban alokasi kos; Langkah 2: Menganalisis aliran kuantitas fisik produk.",
+          "Langkah 1: Menghitung unit ekuivalen; Langkah 2: Akumulasi total kos.",
+          "Langkah 1: Menganalisis aliran kuantitas fisik produk; Langkah 2: Menghitung unit ekuivalen produksi.",
+          "Langkah 1: Menghitung kos per unit; Langkah 2: Pertanggungjawaban alokasi kos."
+        ],
+        "kunci": 2,
+        "jelas": "Laporan kos produksi diawali dengan menganalisis aliran kuantitas fisik, kemudian menghitung unit ekuivalen. Urutan ini memastikan jumlah unit dan tingkat penyelesaian diketahui sebelum kos per unit dihitung."
+      },
+      {
+        "id": "akbi-50",
+        "tanya": "Dalam sistem akuntansi kos berdasarkan pesanan (job order costing), manakah di antara komponen biaya berikut yang diperlakukan sebagai Kos Tenaga Kerja Langsung untuk pesanan tertentu?",
+        "opsi": [
+          "Gaji manajer divisi yang mengawasi seluruh pesanan produksi.",
+          "Biaya komisi tim penjualan yang mendapatkan pesanan pelanggan.",
+          "Gaji staf administrasi yang mencatat transaksi pesanan.",
+          "Upah pekerja yang secara langsung mengerjakan produk pada pesanan tersebut."
+        ],
+        "kunci": 3,
+        "jelas": "Tenaga kerja langsung adalah upah pekerja yang mengerjakan produk secara langsung pada pesanan tertentu dan dapat ditelusuri ke pesanan itu. Pengawasan umum dan administrasi bukan tenaga kerja langsung."
+      },
+      {
+        "id": "akbi-51",
+        "tanya": "Nilai dari aset yang diberikan, atau akan diberikan, untuk memperoleh aset lain disebut…",
+        "opsi": [
+          "Kos",
+          "Biaya",
+          "Pendapatan",
+          "Rugi"
+        ],
+        "kunci": 0,
+        "jelas": "Kos adalah nilai sumber daya yang dikorbankan atau akan dikorbankan untuk memperoleh aset atau manfaat tertentu. Kos dapat dicatat sebagai aset dan menjadi beban ketika manfaatnya digunakan atau habis."
+      },
+      {
+        "id": "akbi-52",
+        "tanya": "Kos variabel, kos tetap, dan kos campuran merupakan bagian dari klasifikasi biaya berbasis…",
+        "opsi": [
+          "Keterlacakan dengan produk",
+          "Area fungsional",
+          "Periode dibebankan pada pendapatan",
+          "Hubungan dengan volume"
+        ],
+        "kunci": 3,
+        "jelas": "Kos tetap, variabel, dan campuran diklasifikasikan berdasarkan hubungan biaya dengan volume atau tingkat aktivitas. Klasifikasi ini membantu memprediksi perubahan biaya saat aktivitas berubah."
+      },
+      {
+        "id": "akbi-53",
+        "tanya": "Permintaan secara tertulis pada pemasok untuk mengirimkan bahan sesuai dengan kuantitas, kualitas, harga, dan termin dan cara pembayaran yang disepakati disebut dengan…",
+        "opsi": [
+          "Order Pembelian (Purchase Order)",
+          "Anggaran Produksi (Production Budget)",
+          "Permintaan Pembelian (Purchase Requisition)",
+          "Permintaan Bahan (Materials Requisition)"
+        ],
+        "kunci": 0,
+        "jelas": "Purchase order (PO) adalah dokumen pembelian resmi kepada pemasok yang memuat barang, kuantitas, harga, serta ketentuan pengiriman dan pembayaran."
+      },
+      {
+        "id": "akbi-54",
+        "tanya": "Hitunglah besarnya EOQ (Economic Order Quantity) jika diketahui: kos per unit Rp500; kos per pesan Rp32.000; kos pengelolaan bahan 10%; kebutuhan bahan 2.500 unit.",
+        "opsi": [
+          "358 unit",
+          "253 unit",
+          "1.265 unit",
+          "1.789 unit"
+        ],
+        "kunci": 3,
+        "jelas": "EOQ = √(2DS/H). D = 2.500 unit; S = Rp32.000; H = 10% × Rp500 = Rp50 per unit per tahun. EOQ = √(2 × 2.500 × 32.000 ÷ 50) ≈ 1.789 unit, sesuai opsi D."
+      },
+      {
+        "id": "akbi-55",
+        "tanya": "Metode yang digunakan untuk memisahkan unsur tetap dan variabel dari kos overhead pabrik campuran dengan cara mereview data kos dan volume masa lalu adalah metode…",
+        "opsi": [
+          "Observasi",
+          "Perekayasaan industrial",
+          "Analisis akun",
+          "Diagram serak"
+        ],
+        "kunci": 0,
+        "jelas": "Metode observasi mengestimasi pemisahan kos tetap dan variabel dengan mengamati data kos serta volume aktivitas masa lalu. Estimasi ini perlu didasarkan pada data yang representatif."
+      },
+      {
+        "id": "akbi-56",
+        "tanya": "Berdasarkan data PT Permata: titik tinggi 50.000 jam mesin dengan kos Rp65.000.000 dan titik rendah 25.000 jam mesin dengan kos Rp50.000.000. Persamaan kos campurannya adalah…",
+        "opsi": [
+          "Rp65.000.000 + Rp600.X",
+          "Rp50.000.000 + Rp750.X",
+          "Rp35.000.000 + Rp600.X",
+          "Rp35.000.000 + Rp750.X"
+        ],
+        "kunci": 2,
+        "jelas": "Tarif variabel = (Rp65.000.000 − Rp50.000.000) ÷ (50.000 − 25.000) = Rp600 per jam mesin. Kos tetap = Rp65.000.000 − (Rp600 × 50.000) = Rp35.000.000. Persamaan: Y = Rp35.000.000 + Rp600X."
+      },
+      {
+        "id": "akbi-57",
+        "tanya": "Salah satu estimasi tingkat aktivitas yang digunakan dalam menentukan tarif overhead pabrik, dengan berasumsi terdapat penyesuaian permintaan atas produk yang dihasilkan serta mempertimbangkan fluktuasi musiman dalam produksi, adalah menggunakan kapasitas…",
+        "opsi": [
+          "Normal atau jangka panjang",
+          "Teoritis atau ideal",
+          "Praktikal atau realistik",
+          "Menganggur dan berlebih"
+        ],
+        "kunci": 0,
+        "jelas": "Kapasitas normal atau jangka panjang memperhitungkan kebutuhan produksi rata-rata beberapa periode dan fluktuasi musiman. Estimasi ini membantu menetapkan tarif overhead yang lebih stabil."
+      },
+      {
+        "id": "akbi-58",
+        "tanya": "PT Merdeka menyewa gedung pabrik Rp275.000.000 untuk tiga departemen. Harga pasar sewa: pemotongan Rp90.000.000, perakitan Rp120.000.000, dan penyelesaian Rp100.000.000. Alokasi sewa untuk departemen penyelesaian menggunakan basis harga pasar adalah…",
+        "opsi": [
+          "Rp79.838.710",
+          "Rp88.709.677",
+          "Rp106.451.613",
+          "Rp275.000.000"
+        ],
+        "kunci": 1,
+        "jelas": "Proporsi harga pasar departemen penyelesaian = Rp100.000.000 ÷ (Rp90.000.000 + Rp120.000.000 + Rp100.000.000). Alokasi = proporsi × Rp275.000.000 ≈ Rp88.709.677."
+      },
+      {
+        "id": "akbi-59",
+        "tanya": "PT Permata memiliki dua departemen produksi (A dan B) dan dua departemen pendukung (X dan Y). Kos departemen X didistribusikan berdasarkan jumlah pekerja, departemen Y berdasarkan luas lantai. Jika departemen X memberi dukungan kepada Y, berapakah tarif overhead departemen B dengan metode bertahap (step-down)?",
+        "opsi": [
+          "Rp559,20 per JKL",
+          "Rp1.200,72 per JKL",
+          "Rp6.554,48 per JKL",
+          "Rp8.560,50 per JKL"
+        ],
+        "kunci": 2,
+        "jelas": "Metode step-down mengalokasikan kos departemen jasa secara bertahap sesuai urutan. Departemen jasa yang telah dialokasikan tidak menerima alokasi balik dari departemen jasa berikutnya. Data rinci pembagian dan basis tarif pada soal tidak cukup untuk menghitung ulang nilai kunci."
+      },
+      {
+        "id": "akbi-60",
+        "tanya": "Dokumen yang digunakan dalam sistem kos pekerjaan order untuk mencatat jam kerja langsung setiap pekerja, yang berguna untuk mengonversi order atau pekerjaan tertentu, disebut…",
+        "opsi": [
+          "Material Requisition",
+          "Job Order Cost Sheet",
+          "Invoice",
+          "Labor Job Ticket"
+        ],
+        "kunci": 3,
+        "jelas": "Labor job ticket mencatat waktu kerja yang digunakan pekerja untuk pekerjaan atau pesanan tertentu. Data jam tersebut digunakan untuk menghitung tenaga kerja langsung yang dibebankan ke pesanan."
+      },
+      {
+        "id": "akbi-61",
+        "tanya": "Dalam sistem kos proses, apabila bahan baku yang sama awalnya diproses di satu departemen kemudian menghasilkan beberapa jenis produk yang selanjutnya diproses di beberapa departemen berbeda, bentuk aliran produk tersebut adalah…",
+        "opsi": [
+          "Sekuensial",
+          "Paralel",
+          "Selektif",
+          "Langsung"
+        ],
+        "kunci": 2,
+        "jelas": "Aliran selektif terjadi ketika keluaran dari proses awal diarahkan ke proses atau departemen lanjutan yang berbeda, sesuai jenis produk yang dihasilkan."
+      },
+      {
+        "id": "akbi-62",
+        "tanya": "Di Departemen X pada bulan April, biaya bahan baku Rp65.000.000, tenaga kerja langsung Rp43.500.000, dan overhead pabrik Rp35.200.000. Unit selesai dan ditransfer ke Departemen Y sebanyak 75.000 unit; PDP akhir 20.000 unit (90% bahan baku dan 75% konversi). Besarnya kos unit untuk produk selesai adalah…",
+        "opsi": [
+          "Rp98.500.000",
+          "Rp100.560.000",
+          "Rp118.002.000",
+          "Rp246.007.000"
+        ],
+        "kunci": 2,
+        "jelas": "Kos unit produk selesai memerlukan pembagian biaya tiap unsur dengan unit ekuivalen bahan dan konversi. Soal menyediakan tingkat penyelesaian PDP, tetapi nilai kunci perlu diuji dengan perhitungan unit ekuivalen dan alokasi biaya; jangan menyamakan total biaya dengan kos per unit."
+      },
+      {
+        "id": "akbi-63",
+        "tanya": "Kondisi akibat penambahan bahan baku setelah departemen pertama yang tidak memerlukan modifikasi dalam penyusunan laporan kos produksi adalah jika jumlah unit yang diproses…",
+        "opsi": [
+          "Tidak bertambah, tetapi terdapat kenaikan kos produksi",
+          "Bertambah, tetapi tidak terdapat kenaikan kos produksi",
+          "Bertambah, dan terdapat kenaikan kos produksi",
+          "Tidak bertambah, dan tidak terdapat kenaikan kos produksi"
+        ],
+        "kunci": 0,
+        "jelas": "Jika penambahan bahan meningkatkan kos tetapi tidak menambah jumlah unit, aliran kuantitas fisik tetap. Jumlah unit tidak perlu disesuaikan, tetapi biaya tambahan tetap diperhitungkan dalam laporan kos produksi."
+      },
+      {
+        "id": "akbi-64",
+        "tanya": "Produk yang tidak memenuhi standar produksi dan dijual sesuai nilai sisanya atau dibuang disebut…",
+        "opsi": [
+          "Produk rusak",
+          "Produk cacat",
+          "Bahan sisa",
+          "Bahan sisa buangan"
+        ],
+        "kunci": 0,
+        "jelas": "Produk rusak tidak memenuhi standar dan tidak dapat diperbaiki secara ekonomis; produk dapat dijual dengan nilai sisa atau dibuang. Produk cacat berbeda karena masih mungkin diperbaiki."
+      },
+      {
+        "id": "akbi-65",
+        "tanya": "Karakteristik dasar produk sampingan (by-product) adalah…",
+        "opsi": [
+          "Dalam proses pemanufakturannya selalu memiliki titik pisah (split-off point)",
+          "Dihasilkan dari bahan baku dan proses yang sama",
+          "Merupakan hasil incidental (tidak direncana) yang dihasilkan dari pemrosesan produk lainnya",
+          "Tidak memiliki nilai yang lebih besar secara signifikan dibandingkan produk bersama lain"
+        ],
+        "kunci": 2,
+        "jelas": "Produk sampingan merupakan hasil tambahan dari proses yang menghasilkan produk utama. Nilainya relatif lebih kecil dan bukan tujuan utama produksi."
+      },
+      {
+        "id": "akbi-66",
+        "tanya": "PT Jaya memproduksi tiga jenis produk dengan total kos bersama Rp103.600.000 pada titik pisah. Dengan metode rata-rata berbobot, kos produksi untuk produk Z adalah…",
+        "opsi": [
+          "Rp25.000.000",
+          "Rp36.000.000",
+          "Rp52.500.000",
+          "Rp75.000.000"
+        ],
+        "kunci": 2,
+        "jelas": "Metode rata-rata berbobot mengalokasikan kos bersama berdasarkan bobot atau ukuran relatif yang ditetapkan untuk produk. Data kuantitas dan bobot produk tidak tercantum, sehingga kunci Rp52.500.000 belum dapat diverifikasi."
+      },
+      {
+        "id": "akbi-67",
+        "tanya": "Diketahui proyeksi jumlah unit produksi tahun 2013 sebanyak 45.000 unit. Bahan baku yang dibutuhkan untuk satu unit produk 3 ton. Tenaga kerja langsung per unit: pencetakan 4 jam (tarif Rp15.000/jam) dan penggabungan 13 jam (tarif Rp18.000/jam). Harga standar rata-rata tenaga kerja langsung per JKL adalah…",
+        "opsi": [
+          "Pilihan A tidak tersedia pada sumber PDF.",
+          "Pilihan B tidak tersedia pada sumber PDF.",
+          "Pilihan C tidak tersedia pada sumber PDF.",
+          "Pilihan D tidak tersedia pada sumber PDF."
+        ],
+        "kunci": 1,
+        "jelas": "Harga standar rata-rata tenaga kerja langsung dihitung dengan menjumlahkan biaya standar tiap jenis tenaga kerja lalu membaginya dengan total jam. (4 × Rp15.000) + (13 × Rp18.000) = Rp294.000 untuk 17 jam, sehingga rata-rata ≈ Rp17.294 per jam. Opsi tidak tersedia untuk memeriksa kunci B."
+      },
+      {
+        "id": "akbi-68",
+        "tanya": "Diketahui kos standar bahan baku (3 meter @ Rp8.000) Rp24.000 per unit, produksi 4.500 unit, dan kos aktual bahan baku (1.500 meter dibeli dan digunakan) Rp12.500.000. Besarnya variansi efisiensi bahan baku adalah…",
+        "opsi": [
+          "Pilihan A tidak tersedia pada sumber PDF.",
+          "Pilihan B tidak tersedia pada sumber PDF.",
+          "Pilihan C tidak tersedia pada sumber PDF.",
+          "Pilihan D tidak tersedia pada sumber PDF."
+        ],
+        "kunci": 0,
+        "jelas": "Variansi efisiensi bahan baku mengukur perbedaan kuantitas bahan aktual dengan kuantitas standar yang seharusnya digunakan untuk output aktual, dikalikan harga standar. Informasi pada soal perlu ditelaah karena jumlah pembelian/penggunaan dan biaya aktual yang dicantumkan tampak tidak sejalan."
+      },
+      {
+        "id": "akbi-69",
+        "tanya": "Diketahui kos standar overhead tetap (1,5 JKL @ Rp4.000) Rp6.000 dan kos aktual overhead tetap Rp15.500.000, dengan kapasitas ekspektasian 3.500 JKL. Besarnya variansi pengeluaran overhead tetap adalah…",
+        "opsi": [
+          "Pilihan A tidak tersedia pada sumber PDF.",
+          "Pilihan B tidak tersedia pada sumber PDF.",
+          "Pilihan C tidak tersedia pada sumber PDF.",
+          "Pilihan D tidak tersedia pada sumber PDF."
+        ],
+        "kunci": 0,
+        "jelas": "Variansi pengeluaran overhead tetap membandingkan overhead tetap aktual dengan overhead tetap yang dianggarkan. Untuk memastikan angka variansi, nilai anggaran harus konsisten dengan kapasitas dan jam standar yang digunakan."
+      }
+    ]
+  }
+]
+};
+
+</script>
+<script>
+/* QuizLearn: logika website. Tidak perlu diubah untuk mengganti soal (edit data.js). */
+(function () {
+  'use strict';
+
+  var D = window.QL_DATA;
+  // Jika beberapa quiz dipasang di domain yang sama, isi "kunciPenyimpanan" di data.js
+  // (misalnya "pemjasa") agar riwayat tiap mata kuliah tidak tercampur.
+  var PFX = D.kunciPenyimpanan ? 'ql_' + D.kunciPenyimpanan + '_' : 'ql_';
+  var K_RIWAYAT = PFX + 'riwayat_v1';
+  var K_AKTIF = PFX + 'ujian_aktif_v1';
+  var VIEWS = ['beranda', 'latihan', 'ujian', 'progres'];
+  // Batas analisis penguasaan (bisa diubah di data.js > pengaturan > penguasaan)
+  var PG = (D.pengaturan && D.pengaturan.penguasaan) || {};
+  var BATAS_KUASAI = PG.batasDikuasai || 80;   // persen benar minimal untuk "Dikuasai"
+  var BATAS_CUKUP = PG.batasCukup || 60;       // persen benar minimal untuk "Cukup"
+  var MIN_BAB = PG.minJawabanBab || 5;         // jumlah jawaban minimal agar bab dinilai
+  var MIN_SOAL = PG.minJawabanSoal || 2;       // soal dinilai setelah dijawab minimal sekian kali
+  var BATAS_SALAH = PG.batasSoalSalah || 50;   // persen salah minimal agar soal masuk "sering salah"
+
+  /* ---------- penyimpanan (aman jika localStorage diblokir) ---------- */
+  var mem = {};
+  function sget(k) {
+    try { var v = localStorage.getItem(k); return v === null ? (mem[k] || null) : v; }
+    catch (e) { return mem[k] || null; }
+  }
+  function sset(k, v) { mem[k] = v; try { localStorage.setItem(k, v); } catch (e) {} }
+  function sdel(k) { delete mem[k]; try { localStorage.removeItem(k); } catch (e) {} }
+  function parse(s, fb) { try { return s ? JSON.parse(s) : fb; } catch (e) { return fb; } }
+
+  /* ---------- data soal ---------- */
+  var Q = {};       // id -> soal
+  var ALL = [];     // semua id soal berurutan dari bab pertama
+  var BAB = {};     // id bab -> bab
+  D.bab.forEach(function (b) {
+    BAB[b.id] = b;
+    b.soal.forEach(function (s) {
+      s.babId = b.id; s.babJudul = b.judul;
+      Q[s.id] = s; ALL.push(s.id);
+    });
+  });
+
+  /* ---------- util ---------- */
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmtNum(n) { return Number(n).toLocaleString('id-ID', { maximumFractionDigits: 1 }); }
+  function fmtTime(sec) {
+    sec = Math.max(0, sec);
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    } catch (e) { return iso; }
+  }
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  var LET = ['A', 'B', 'C', 'D'];
+
+  var P = {
+    home: '<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-6h4v6"/>',
+    book: '<path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z"/><path d="M12 6v13.5"/>',
+    pencil: '<path d="M4 20l1-4L16 5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14 7l3 3"/>',
+    trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v2a3 3 0 0 0 4 2.8M16 6h4v2a3 3 0 0 1-4 2.8"/><path d="M12 13v4M8.5 20h7M10 17h4"/>',
+    chart: '<rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="5" width="4" height="15" rx="1"/><rect x="16" y="9" width="4" height="11" rx="1"/>',
+    clip: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/>',
+    star: '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9L3.5 9.7l5.9-.8z"/>',
+    target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12h.01"/>',
+    chev: '<path d="M9 6l6 6-6 6"/>',
+    left: '<path d="M15 6l-6 6 6 6"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    x: '<path d="M6 6l12 12M18 6L6 18"/>',
+    flag: '<path d="M6 21V4"/><path d="M6 5h11l-2 4 2 4H6"/>',
+    grid: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+    bolt: '<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>',
+    calc: '<rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
+    bksp: '<path d="M21 5H9l-6 7 6 7h12z"/><path d="M12.5 9.5l5 5M17.5 9.5l-5 5"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'
+  };
+  function ic(n, s) {
+    s = s || 22;
+    return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + '</svg>';
+  }
+
+  /* ---------- riwayat ujian ---------- */
+  function validRec(x) {
+    return x && typeof x === 'object' && typeof x.id === 'string' && x.id.length > 0 && x.id.length <= 40 &&
+      typeof x.tanggal === 'string' && !isNaN(new Date(x.tanggal).getTime()) &&
+      Number.isInteger(x.benar) && Number.isInteger(x.salah) && x.benar >= 0 && x.salah >= 0 && x.benar + x.salah > 0;
+  }
+  function cleanRec(x) {
+    var total = x.benar + x.salah;
+    return {
+      id: x.id,
+      tanggal: new Date(x.tanggal).toISOString(),
+      benar: x.benar, salah: x.salah, total: total,
+      nilai: Math.round(x.benar / total * 1000) / 10,
+      durasi: Number.isFinite(x.durasi) && x.durasi >= 0 ? Math.round(x.durasi) : 0,
+      waktuHabis: !!x.waktuHabis,
+      detail: cleanDetail(x.detail)
+    };
+  }
+  // detail: id soal -> 1 (benar), 0 (salah), -1 (tidak sempat dijawab karena waktu habis)
+  function cleanDetail(d) {
+    var o = {}, n = 0;
+    if (!d || typeof d !== 'object' || Array.isArray(d)) return o;
+    Object.keys(d).forEach(function (k) {
+      if (n < 1000 && k.length <= 40 && k !== '__proto__' && (d[k] === 1 || d[k] === 0 || d[k] === -1)) { o[k] = d[k]; n++; }
+    });
+    return o;
+  }
+  function hasQ(id) { return Object.prototype.hasOwnProperty.call(Q, id); }
+  function getHist() {
+    var r = parse(sget(K_RIWAYAT), []);
+    return Array.isArray(r) ? r.filter(validRec).map(cleanRec) : [];
+  }
+  function setHist(h) { sset(K_RIWAYAT, JSON.stringify(h)); }
+  function stats(h) {
+    if (!h.length) return { n: 0, avg: null, max: null, last: null };
+    var sum = 0, max = 0;
+    h.forEach(function (r) { sum += r.nilai; if (r.nilai > max) max = r.nilai; });
+    return { n: h.length, avg: Math.round(sum / h.length * 10) / 10, max: max, last: h[h.length - 1].nilai };
+  }
+
+  /* ---------- analisis penguasaan (dari riwayat ujian) ---------- */
+  function statusBab(n, pct) {
+    if (n < MIN_BAB) return { k: 'data', t: 'Belum cukup data' };
+    if (pct >= BATAS_KUASAI) return { k: 'kuasai', t: 'Dikuasai' };
+    if (pct >= BATAS_CUKUP) return { k: 'cukup', t: 'Cukup' };
+    return { k: 'belum', t: 'Belum dikuasai' };
+  }
+  function analisis(h) {
+    var perSoal = {}, perBab = {}, ada = false;
+    D.bab.forEach(function (b) { perBab[b.id] = { b: b, benar: 0, salah: 0 }; });
+    h.forEach(function (r) {
+      Object.keys(r.detail || {}).forEach(function (id) {
+        var c = r.detail[id];
+        if (!hasQ(id) || c === -1) return;   // soal yang tidak sempat dijawab tidak dihitung
+        ada = true;
+        var s = perSoal[id] || (perSoal[id] = { id: id, benar: 0, salah: 0 });
+        var bb = perBab[Q[id].babId];
+        if (c === 1) { s.benar++; bb.benar++; } else { s.salah++; bb.salah++; }
+      });
+    });
+    var bab = D.bab.map(function (b) {
+      var x = perBab[b.id], n = x.benar + x.salah, pct = n ? Math.round(x.benar / n * 100) : 0;
+      return { b: b, n: n, pct: pct, st: statusBab(n, pct) };
+    });
+    var salah = [], benar = [];
+    ALL.forEach(function (id) {
+      var s = perSoal[id];
+      if (!s) return;
+      var n = s.benar + s.salah;
+      if (n < MIN_SOAL) return;
+      if (s.salah === 0) benar.push(s);
+      else if (s.salah / n * 100 >= BATAS_SALAH) salah.push(s);
+    });
+    salah.sort(function (a, b) {
+      return (b.salah / (b.benar + b.salah)) - (a.salah / (a.benar + a.salah)) || b.salah - a.salah;
+    });
+    return { ada: ada, bab: bab, salah: salah, benar: benar };
+  }
+
+  /* ---------- status aplikasi ---------- */
+  var view = readHash();
+  var lat = { fase: 'awal', list: [], i: 0, ans: {}, b: 'semua', label: '' };
+  var aktif = loadAktif();      // ujian yang sedang berjalan
+  var ujHasil = null;           // hasil ujian terakhir (ditampilkan sekali)
+  var navOpen = false;          // pop-up navigasi nomor soal
+  var calcOpen = false;         // pop-up kalkulator
+  var calc = null;              // status kalkulator (diisi di bagian kalkulator)
+  var confirming = false;       // panel konfirmasi akhiri ujian
+  var hapusConfirm = false;     // panel konfirmasi hapus riwayat
+  var cadangan = null;          // teks cadangan untuk disalin manual
+  var lastView = null;
+
+  /* ---------- kunci ujian: selama ujian berjalan, pengguna tidak boleh pindah halaman ---------- */
+  var PESAN_KUNCI = 'Ujian sedang berjalan. Selesaikan ujian dulu sebelum pindah halaman.';
+  function terkunci() { return !!aktif; }
+  function kembaliKeUjian() {
+    try { history.replaceState(null, '', '#ujian'); } catch (e) { location.hash = 'ujian'; }
+  }
+  // Jika halaman dibuka ulang (refresh) saat ujian masih berjalan, langsung kembali ke ujian.
+  if (aktif && view !== 'ujian') { view = 'ujian'; kembaliKeUjian(); }
+
+  function readHash() {
+    var h = (location.hash || '').replace('#', '');
+    return VIEWS.indexOf(h) >= 0 ? h : 'beranda';
+  }
+  function loadAktif() {
+    var a = parse(sget(K_AKTIF), null);
+    if (!a || !Array.isArray(a.ids) || !a.ids.length || typeof a.endAt !== 'number' || typeof a.startAt !== 'number') return null;
+    for (var i = 0; i < a.ids.length; i++) { if (!Q[a.ids[i]]) return null; }
+    a.answers = (a.answers && typeof a.answers === 'object') ? a.answers : {};
+    var fl = {};
+    if (a.flags && typeof a.flags === 'object') { a.ids.forEach(function (id) { if (a.flags[id] === true && a.answers[id] !== undefined && a.answers[id] !== null) fl[id] = true; }); }
+    a.flags = fl;
+    a.idx = Math.min(Math.max(0, a.idx | 0), a.ids.length - 1);
+    return a;
+  }
+  function saveAktif() { sset(K_AKTIF, JSON.stringify(aktif)); }
+
+  /* ---------- tampilan ---------- */
+  var $main = document.getElementById('main');
+  var $dock = document.getElementById('dock');
+  var $toast = document.getElementById('toast');
+  var $ov = document.createElement('div'); $ov.id = 'overlay'; document.body.appendChild($ov);
+  var toastTimer = null;
+  document.getElementById('mapel').textContent = D.mapel;
+
+  function toast(msg) {
+    $toast.textContent = msg;
+    $toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { $toast.classList.remove('show'); }, 3800);
+  }
+
+  var DOCK_ITEMS = [['beranda', 'Beranda', 'home'], ['latihan', 'Latihan', 'pencil'], ['ujian', 'Ujian', 'trophy'], ['progres', 'Progres', 'chart']];
+  function renderDock() {
+    if ($dock.children.length !== DOCK_ITEMS.length) {
+      $dock.innerHTML = DOCK_ITEMS.map(function (it) {
+        return '<button type="button" data-act="go" data-v="' + it[0] + '">' + ic(it[2]) + it[1] + '</button>';
+      }).join('');
+    }
+    // Tombol dipertahankan; hanya penanda halaman aktif yang diganti agar transisinya halus.
+    for (var i = 0; i < $dock.children.length; i++) {
+      var b = $dock.children[i];
+      if (b.getAttribute('data-v') === view) b.setAttribute('aria-current', 'page');
+      else b.removeAttribute('aria-current');
+      // Saat ujian berjalan, menu selain Ujian dinonaktifkan.
+      var kunci = terkunci() && b.getAttribute('data-v') !== 'ujian';
+      if (kunci) { b.setAttribute('aria-disabled', 'true'); b.style.opacity = '.4'; }
+      else { b.removeAttribute('aria-disabled'); b.style.opacity = ''; }
+    }
+  }
+
+  function reduced() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+  /* ---- Pembaruan DOM tanpa membangun ulang: elemen yang sama dipertahankan sehingga transisi CSS,
+     fokus, dan efek tekan tombol tidak terputus saat jawaban dipilih atau soal berganti. ---- */
+  var KEEP_CLS = ['ql-pressed', 'q-in-next', 'q-in-prev'];
+  function syncClass(o, n) {
+    var want = n.getAttribute('class') || '';
+    var keep = KEEP_CLS.filter(function (c) { return o.classList.contains(c) && !n.classList.contains(c); });
+    if (keep.length) want = (want + ' ' + keep.join(' ')).trim();
+    if (want) { if (o.getAttribute('class') !== want) o.setAttribute('class', want); }
+    else if (o.hasAttribute('class')) o.removeAttribute('class');
+  }
+  function syncAttrs(o, n) {
+    var i, nm;
+    for (i = o.attributes.length - 1; i >= 0; i--) {
+      nm = o.attributes[i].name;
+      if (nm !== 'class' && !n.hasAttribute(nm)) o.removeAttribute(nm);
+    }
+    for (i = 0; i < n.attributes.length; i++) {
+      nm = n.attributes[i].name;
+      if (nm !== 'class' && o.getAttribute(nm) !== n.attributes[i].value) o.setAttribute(nm, n.attributes[i].value);
+    }
+    syncClass(o, n);
+  }
+  function morph(o, n) {
+    if (o.nodeType !== n.nodeType || o.nodeName !== n.nodeName) { o.parentNode.replaceChild(n, o); return; }
+    if (o.nodeType === 3 || o.nodeType === 8) { if (o.nodeValue !== n.nodeValue) o.nodeValue = n.nodeValue; return; }
+    if (o.nodeType !== 1) return;
+    syncAttrs(o, n);
+    morphKids(o, n);
+  }
+  function kid(c) { return c.nodeType === 1 && c.id ? c.id : ''; }
+  // Elemen ber-id dicocokkan lewat id-nya (mis. kolom isian), sisanya lewat urutan.
+  function morphKids(o, n) {
+    var oa = Array.prototype.slice.call(o.childNodes), na = Array.prototype.slice.call(n.childNodes);
+    var byId = {}, newIds = {}, used = [], pos = 0, i, oc, nc;
+    oa.forEach(function (c) { if (kid(c)) byId[kid(c)] = c; });
+    na.forEach(function (c) { if (kid(c)) newIds[kid(c)] = true; });
+    for (i = 0; i < na.length; i++) {
+      nc = na[i]; oc = null;
+      if (kid(nc) && byId[kid(nc)] && used.indexOf(byId[kid(nc)]) < 0) oc = byId[kid(nc)];
+      else if (!kid(nc)) {
+        while (pos < oa.length && (used.indexOf(oa[pos]) >= 0 || (kid(oa[pos]) && newIds[kid(oa[pos])]))) pos++;
+        if (pos < oa.length) oc = oa[pos++];
+      }
+      if (oc) {
+        used.push(oc);
+        if (o.childNodes[i] !== oc) o.insertBefore(oc, o.childNodes[i] || null);
+        morph(oc, nc);
+      } else {
+        o.insertBefore(nc, o.childNodes[i] || null);
+      }
+    }
+    oa.forEach(function (c) { if (used.indexOf(c) < 0 && c.parentNode === o) o.removeChild(c); });
+  }
+  function patchMain(html, force) {
+    if (force) { $main.innerHTML = html; return; }
+    var t = document.createElement('template');
+    t.innerHTML = html;
+    morphKids($main, t.content);
+  }
+
+  /* ---- Transisi pindah soal ---- */
+  var pendingNav = null;   // perpindahan soal yang menunggu animasi keluar selesai
+  function isQuestionView() {
+    return view === 'latihan' ? lat.fase === 'jalan' : !!(view === 'ujian' && aktif && !ujHasil);
+  }
+  function animQuestion(dir) {
+    var el = $main.querySelector('.qsec');
+    if (!el) return;
+    el.classList.remove('q-out-next', 'q-out-prev', 'q-in-next', 'q-in-prev');
+    void el.offsetWidth;   // paksa browser mengulang animasi
+    var cls = dir === 'prev' ? 'q-in-prev' : 'q-in-next';
+    el.classList.add(cls);
+    var selesai = function () { el.classList.remove(cls); el.removeEventListener('animationend', selesai); };
+    el.addEventListener('animationend', selesai);
+    setTimeout(selesai, 400);
+  }
+  function pindahSoal(arah, ubah) {
+    ubah();   // status berubah segera; tampilan menyusul setelah animasi keluar
+    if (reduced()) { render({ top: true, questionDirection: arah }); return; }
+    if (pendingNav) { pendingNav.arah = arah; return; }   // ketukan beruntun: cukup render sekali dengan status terbaru
+    var cur = $main.querySelector('.qsec');
+    if (cur) cur.classList.add(arah === 'prev' ? 'q-out-prev' : 'q-out-next');
+    pendingNav = { arah: arah, t: null };
+    pendingNav.t = setTimeout(function () { render({ top: true, questionDirection: arah }); }, 110);
+  }
+
+  /* ---- Pop-up (navigasi soal dan kalkulator) ---- */
+  var ovKey = '';
+  function overlayKey() {
+    var on = (navOpen || calcOpen) && ((view === 'ujian' && aktif && !ujHasil) || (view === 'latihan' && lat.fase === 'jalan'));
+    if (!on) { navOpen = false; calcOpen = false; return ''; }
+    return calcOpen ? 'calc' : (view === 'latihan' ? 'lat-nav' : 'uj-nav');
+  }
+  function setInert(on) {
+    [document.querySelector('.app'), document.getElementById('dock')].forEach(function (x) {
+      if (!x) return;
+      if (on) x.setAttribute('inert', ''); else x.removeAttribute('inert');
+    });
+  }
+  // Hanya membangun ulang pop-up bila jenisnya berubah, sehingga animasi buka tidak terulang dan isi halaman tidak berkedip.
+  function syncOverlay() {
+    var key = overlayKey();
+    if (key === ovKey && (key === '' || $ov.firstChild)) return;
+    ovKey = key;
+    $ov.innerHTML = key === 'calc' ? vCalcPopup() : key === 'lat-nav' ? vLatNavPopup() : key === 'uj-nav' ? vNavPopup() : '';
+    setInert(!!key);
+    document.body.style.overflow = key ? 'hidden' : '';
+  }
+  function closePopup(cb) {
+    var popup = $ov.querySelector('.ov');
+    var selesai = function () { navOpen = false; calcOpen = false; syncOverlay(); if (cb) cb(); };
+    if (!popup) { selesai(); return; }
+    if (popup.classList.contains('is-closing')) return;
+    popup.classList.add('is-closing');
+    setTimeout(selesai, reduced() ? 0 : 175);
+  }
+  function fokus(act) {
+    var el = document.querySelector('[data-act="' + act + '"]');
+    if (el) el.focus();
+  }
+
+  function render(opts) {
+    opts = opts || {};
+    if (pendingNav) {
+      clearTimeout(pendingNav.t);
+      if (!opts.questionDirection) { opts.questionDirection = pendingNav.arah; opts.top = true; }
+      pendingNav = null;
+    }
+    var html;
+    if (view === 'latihan') html = vLatihan();
+    else if (view === 'ujian') html = vUjian();
+    else if (view === 'progres') html = vProgres();
+    else html = vBeranda();
+    var swap = !!opts.questionDirection && isQuestionView() && lastView === view && !reduced();
+    if (swap) $main.classList.add('q-swap');   // matikan transisi isi kartu selama soal diganti
+    patchMain(html, lastView !== view);
+    if (swap) {
+      animQuestion(opts.questionDirection);
+      var lepas = function () { $main.classList.remove('q-swap'); };
+      if (window.requestAnimationFrame) requestAnimationFrame(function () { requestAnimationFrame(lepas); });
+      else setTimeout(lepas, 50);
+    }
+    syncOverlay();
+    renderDock();
+    document.title = 'QuizLearn - ' + D.mapel;
+    if (lastView !== view || opts.top) {
+      window.scrollTo(0, 0);
+      if (lastView !== view) { try { $main.focus({ preventScroll: true }); } catch (e) {} }
+    }
+    lastView = view;
+    tick();
+  }
+
+  function go(v) {
+    if (terkunci() && v !== 'ujian') { toast(PESAN_KUNCI); return; }
+    if (location.hash === '#' + v) { view = v; render(); }
+    else { location.hash = v; }
+  }
+  window.addEventListener('hashchange', function () {
+    var v = readHash();
+    // Tombol Kembali / ubah alamat saat ujian berjalan: batalkan dan tetap di ujian.
+    if (terkunci() && v !== 'ujian') { kembaliKeUjian(); view = 'ujian'; toast(PESAN_KUNCI); render(); return; }
+    view = v; render();
+  });
+  // Peringatan bila pengguna mencoba menutup / memuat ulang halaman saat ujian berjalan.
+  window.addEventListener('beforeunload', function (e) {
+    if (terkunci()) { e.preventDefault(); e.returnValue = ''; return ''; }
+  });
+
+  /* ----- grafik nilai ----- */
+  function chart(h) {
+    var d = h.slice(-7), n = d.length;
+    if (!n) return '<p class="empty">Belum ada data. Selesaikan satu ujian untuk melihat grafik nilai.</p>';
+    var x0 = 40, x1 = 292, base = 130;
+    var pts = d.map(function (r, i) {
+      return { x: n === 1 ? 166 : x0 + i * (x1 - x0) / (n - 1), y: base - r.nilai, r: r, no: h.length - n + i + 1 };
+    });
+    var last = pts[n - 1];
+    var s = '<svg class="chart" viewBox="0 0 320 152" role="img" aria-label="Grafik nilai ujian terakhir, nilai terbaru ' + fmtNum(last.r.nilai) + '">';
+    s += '<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A0A0A" stop-opacity="0.18"/><stop offset="1" stop-color="#0A0A0A" stop-opacity="0"/></linearGradient></defs>';
+    [100, 75, 50, 25, 0].forEach(function (v) {
+      s += '<line class="gl" x1="30" y1="' + (base - v) + '" x2="312" y2="' + (base - v) + '"/>';
+      s += '<text x="24" y="' + (base - v + 3) + '" text-anchor="end">' + v + '</text>';
+    });
+    if (n > 1) {
+      s += '<path d="M' + pts[0].x + ',' + base + ' ' + pts.map(function (p) { return 'L' + p.x + ',' + p.y; }).join(' ') + ' L' + last.x + ',' + base + ' Z" fill="url(#ag)"/>';
+      s += '<polyline class="ln" points="' + pts.map(function (p) { return p.x + ',' + p.y; }).join(' ') + '"/>';
+    }
+    pts.forEach(function (p, i) {
+      if (i < n - 1) s += '<circle class="pt" cx="' + p.x + '" cy="' + p.y + '" r="4.5"/>';
+    });
+    s += '<circle class="pe" cx="' + last.x + '" cy="' + last.y + '" r="5.5"/>';
+    var ty = Math.max(2, last.y - 28), tx = Math.min(last.x - 20, 278);
+    s += '<rect class="tip" x="' + tx + '" y="' + ty + '" width="40" height="18" rx="9"/>';
+    s += '<text class="tipt" x="' + (tx + 20) + '" y="' + (ty + 13) + '" text-anchor="middle">' + fmtNum(last.r.nilai) + '</text>';
+    pts.forEach(function (p) { s += '<text x="' + p.x + '" y="147" text-anchor="middle">#' + p.no + '</text>'; });
+    return s + '</svg>';
+  }
+
+  /* ----- beranda ----- */
+  function statsHtml(st) {
+    var items = [
+      ['clip', st.n ? String(st.n) : '0', 'Ujian Selesai'],
+      ['target', st.avg === null ? '–' : fmtNum(st.avg), 'Rata-rata Nilai'],
+      ['trophy', st.max === null ? '–' : fmtNum(st.max), 'Nilai Tertinggi'],
+      ['star', st.last === null ? '–' : fmtNum(st.last), 'Nilai Terakhir']
+    ];
+    return '<div class="stats">' + items.map(function (it) {
+      return '<div class="glass stat">' + ic(it[0], 24) + '<b>' + it[1] + '</b><span>' + it[2] + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  function vBeranda() {
+    var h = getHist(), st = stats(h);
+    var jml = Math.min(D.pengaturan.ujianJumlahSoal, ALL.length), mnt = D.pengaturan.ujianMenit;
+    var html = '<h1 class="h1">Selamat Datang Kembali!</h1>' +
+      '<p class="lead">Berlatih, lalu uji pemahamanmu di ' + esc(D.mapel) + '.</p>';
+    if (aktif) {
+      html += '<section class="glass card" style="flex-direction:row;align-items:center;flex-wrap:wrap"><div style="flex:1 1 160px"><h3 class="h3">Ujian sedang berjalan</h3><span class="muted small">Waktu terus berjalan. Lanjutkan sebelum habis.</span></div><button type="button" class="btn btn-sm" data-act="go" data-v="ujian">Lanjutkan</button></section>';
+    }
+    html += statsHtml(st);
+    html += '<section class="card dark on-dark"><div class="eyebrow">Ujian Quiz</div>' +
+      '<div class="cta"><div class="grow"><div class="t">Uji pemahamanmu</div><div class="meta">' + jml + ' soal, ' + mnt + ' menit</div></div>' +
+      '<button type="button" class="btn btn-light" data-act="go" data-v="ujian">Mulai Ujian ' + ic('arrow', 16) + '</button></div></section>';
+    html += '<section class="glass card"><h2 class="h2"><span class="dot"></span>Perkembangan Nilai Ujian</h2>' + chart(h) + '</section>';
+    return html;
+  }
+
+  /* ----- latihan ----- */
+  function latBaru() { return { fase: 'awal', list: [], i: 0, ans: {}, b: 'semua', label: '' }; }
+
+  function latHitung() {
+    var dj = 0, bn = 0;
+    lat.list.forEach(function (id) {
+      var v = lat.ans[id];
+      if (v !== undefined) { dj++; if (v === Q[id].kunci) bn++; }
+    });
+    return { dj: dj, bn: bn };
+  }
+
+  function exTeks(ok, teks) {
+    return '<div class="ex ' + (ok ? 'ok' : 'bad') + '"><b>' + ic(ok ? 'check' : 'x', 16) + (ok ? 'Mengapa jawaban ini benar' : 'Mengapa jawaban ini salah') + '</b><p>' + esc(teks) + '</p></div>';
+  }
+
+  function vLatihan() {
+    if (lat.fase === 'awal') {
+      return '<h1 class="h1">Latihan Quiz</h1><p class="lead">Kerjakan seluruh soal dalam satu rangkaian. Setiap jawaban langsung dikoreksi dan dijelaskan, tanpa batas waktu.</p>' +
+        '<section class="glass card"><h2 class="h2"><span class="dot"></span>Cara Berlatih</h2><ol class="rules">' +
+        '<li>Bacalah setiap soal dengan teliti.</li>' +
+        '<li>Pilih satu jawaban yang paling tepat.</li>' +
+        '<li>Koreksi dan penjelasan langsung muncul setelah kamu memilih.</li>' +
+        '<li>Jawaban yang sudah dipilih tidak bisa diubah.</li>' +
+        '<li>Gunakan tombol Nomor untuk berpindah ke soal lain.</li>' +
+        '<li>Hasil latihan tidak disimpan di Progres.</li></ol>' +
+        (ALL.length ? '<button type="button" class="btn btn-block" data-act="lat-mulai">' + ic('pencil', 18) + 'Mulai Latihan (' + ALL.length + ' soal)</button>' : '<button type="button" class="btn btn-block" disabled>Mulai Latihan</button><p class="note" style="text-align:center">Belum ada soal tersedia.</p>') + '</section>';
+    }
+    var n = lat.list.length, c = latHitung();
+    if (lat.fase === 'selesai') {
+      var pct = Math.round(c.bn / n * 1000) / 10;
+      return '<h1 class="h1">Latihan Selesai</h1>' +
+        '<section class="glass card"><div class="eyebrow" style="color:var(--ink-2)">' + esc(lat.label) + '</div><div class="score">' + c.bn + '<small> / ' + n + ' benar</small></div><p class="lead">Ketepatan ' + fmtNum(pct) + '%. Hasil latihan tidak disimpan di Progres.</p></section>' +
+        '<div class="row"><button type="button" class="btn" data-act="lat-ulang">Ulangi</button><button type="button" class="btn btn-ghost" data-act="lat-keluar">Kembali</button></div>';
+    }
+    var id = lat.list[lat.i], q = Q[id], pilih = lat.ans[id], done = pilih !== undefined, sisa = n - c.dj;
+    var h = '<div class="qhead"><span class="chip">Soal ' + (lat.i + 1) + ' dari ' + n + '</span>' +
+      '<button type="button" class="chip chip-btn" data-act="nav-buka" aria-haspopup="dialog" aria-label="Buka navigasi soal">' + ic('grid', 14) + '</button>' +
+      '<button type="button" class="chip chip-btn chip-ico" data-act="calc-buka" aria-haspopup="dialog" aria-label="Buka kalkulator">' + ic('calc', 16) + '</button>' +
+      '<button type="button" class="btn btn-ghost btn-sm" style="margin-left:auto" data-act="lat-keluar">Keluar</button></div>';
+    h += '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + n + '" aria-valuenow="' + c.dj + '" aria-label="Kemajuan latihan"><i style="width:' + (c.dj / n * 100) + '%"></i></div>';
+    h += '<section class="glass card qsec"><p class="qtext">' + esc(q.tanya) + '</p><div class="opts">';
+    q.opsi.forEach(function (o, k) {
+      var cls = '', tag = '', ex = '';
+      if (done) {
+        if (k === q.kunci) {
+          cls = ' ok'; tag = '<span class="tag">' + (pilih === k ? 'Jawabanmu benar' : 'Jawaban yang benar') + '</span>';
+          ex = q.jelas ? exTeks(true, q.jelas) : '';
+        } else if (k === pilih) {
+          cls = ' bad'; tag = '<span class="tag">Jawabanmu salah</span>';
+          var jo = (q.jelasOpsi && q.jelasOpsi[k]) || (q.jelas ? 'Pilihan ini kurang tepat. Lihat penjelasan pada jawaban yang benar.' : '');
+          ex = jo ? exTeks(false, jo) : '';
+        } else cls = ' dim';
+      }
+      h += '<div class="og"><button type="button" class="opt' + cls + '" data-act="lat-jawab" data-k="' + k + '"' + (done ? ' disabled' : '') + '><span class="lt">' + LET[k] + '</span><span class="tx"><span>' + esc(o) + '</span>' + tag + '</span></button>' + ex + '</div>';
+    });
+    h += '</div></section>';
+    h += '<div class="ctl"><button type="button" class="btn btn-ghost btn-step" data-act="lat-prev" aria-label="Soal sebelumnya"' + (lat.i === 0 ? ' disabled' : '') + '>' + ic('left', 22) + '</button>' +
+      '<button type="button" class="btn btn-ghost" data-act="lat-akhiri"' + (sisa > 0 ? ' disabled' : '') + '>Akhiri Latihan</button>' +
+      '<button type="button" class="btn btn-ghost btn-step" data-act="lat-next" aria-label="Soal berikutnya"' + (lat.i >= n - 1 ? ' disabled' : '') + '>' + ic('chev', 22) + '</button></div>';
+    if (sisa > 0) h += '<p class="note" style="text-align:center">Masih ada ' + sisa + ' soal yang belum dijawab.</p>';
+    return h;
+  }
+
+  function vLatNavPopup() {
+    var n = lat.list.length, c = latHitung();
+    var g = '<div class="nav-grid" role="group" aria-label="Nomor soal">';
+    lat.list.forEach(function (x, i) {
+      var v = lat.ans[x], d = v !== undefined, ok = d && v === Q[x].kunci;
+      g += '<button type="button" class="nb' + (d ? (ok ? ' done' : ' bad') : '') + (i === lat.i ? ' now' : '') + '" data-act="lat-ke" data-i="' + i + '" aria-label="Soal ' + (i + 1) + (d ? (ok ? ', dijawab benar' : ', dijawab salah') : ', belum dijawab') + '"' + (i === lat.i ? ' aria-current="true"' : '') + '><span class="n">' + (i + 1) + '</span></button>';
+    });
+    g += '</div>';
+    return '<div class="ov" data-act="nav-tutup"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="navt" data-act="noop">' +
+      '<div class="sheet-h"><h2 class="h2" id="navt">Navigasi Soal</h2><button type="button" class="iconbtn" data-act="nav-tutup" aria-label="Tutup navigasi soal">' + ic('x', 18) + '</button></div>' +
+      '<p class="note">Dijawab ' + c.dj + ' dari ' + n + '. Belum dijawab ' + (n - c.dj) + '. Benar ' + c.bn + '. Salah ' + (c.dj - c.bn) + '.</p>' +
+      g + '<button type="button" class="btn btn-block" data-act="nav-tutup">Tutup</button></div></div>';
+  }
+
+  function latMulai(b) {
+    var ids, label;
+    if (!ALL.length) { toast('Belum ada soal tersedia.'); return; }
+    b = b || 'semua';
+    if (b === 'semua') { ids = ALL.slice(); label = 'Semua Soal'; }
+    else if (b === 'salah') {
+      var set = {};
+      analisis(getHist()).salah.forEach(function (s) { set[s.id] = true; });
+      ids = ALL.filter(function (id) { return set[id]; });
+      label = 'Soal yang sering salah';
+      if (!ids.length) { toast('Belum ada soal yang sering salah.'); return; }
+    } else if (BAB[b]) { ids = BAB[b].soal.map(function (s) { return s.id; }); label = BAB[b].judul; }
+    else return;
+    muat('Menyiapkan latihan', function () {
+      lat = { fase: 'jalan', list: ids, i: 0, ans: {}, b: b, label: label };
+      navOpen = false; calcOpen = false;
+      go('latihan');
+      render({ top: true });
+    });
+  }
+
+  /* ----- ujian ----- */
+  function ujianJumlah() { return Math.min(D.pengaturan.ujianJumlahSoal, ALL.length); }
+
+  function vUjian() {
+    if (aktif) return vUjianJalan();
+    if (ujHasil) return vUjianHasil();
+    var mnt = D.pengaturan.ujianMenit;
+    var h = getHist(), last = h.length ? h[h.length - 1] : null;
+    return '<h1 class="h1">Ujian Quiz</h1><p class="lead">Ujikan pemahamanmu tanpa petunjuk jawaban.</p>' +
+      '<section class="glass card"><h2 class="h2"><span class="dot"></span>Peraturan Pengerjaan Quiz</h2><ol class="rules">' +
+      '<li>Bacalah setiap soal dengan teliti.</li>' +
+      '<li>Pilih satu jawaban yang paling tepat.</li>' +
+      '<li>Setiap soal hanya memiliki satu jawaban benar.</li>' +
+      '<li>Waktu pengerjaan ' + mnt + ' menit.</li>' +
+      '<li>Periksa kembali jawaban sebelum menyelesaikan quiz.</li>' +
+      '<li>Hasil quiz ditampilkan setelah pengerjaan selesai.</li></ol>' +
+      (ALL.length ? '<button type="button" class="btn btn-block" data-act="uj-mulai">' + ic('clock', 18) + 'Mulai Ujian</button>' : '<button type="button" class="btn btn-block" disabled>Mulai Ujian</button><p class="note" style="text-align:center">Belum ada soal tersedia.</p>') + '</section>' +
+      (last ? '<p class="note">Ujian terakhir: nilai ' + fmtNum(last.nilai) + ' (' + last.benar + ' benar, ' + last.salah + ' salah), ' + esc(fmtDate(last.tanggal)) + '.</p>' : '');
+  }
+
+  function navGrid(a) {
+    var h = '<div class="nav-grid" role="group" aria-label="Nomor soal">';
+    a.ids.forEach(function (x, i) {
+      var d = a.answers[x] !== undefined && a.answers[x] !== null, r = !!a.flags[x];
+      var huruf = d ? LET[a.answers[x]] : '';
+      h += '<button type="button" class="nb' + (d ? (r ? ' ragu' : ' done') : '') + (i === a.idx ? ' now' : '') + '" data-act="uj-ke" data-i="' + i + '" aria-label="Soal ' + (i + 1) + (d ? ', dijawab ' + huruf : ', belum dijawab') + (r ? ', ragu-ragu' : '') + '"' + (i === a.idx ? ' aria-current="true"' : '') + '><span class="n">' + (d ? huruf : (i + 1)) + '</span></button>';
+    });
+    return h + '</div>';
+  }
+
+  function vNavPopup() {
+    var a = aktif, n = a.ids.length, dj = 0, rg = 0;
+    a.ids.forEach(function (x) { if (a.answers[x] !== undefined && a.answers[x] !== null) dj++; if (a.flags[x]) rg++; });
+    return '<div class="ov" data-act="nav-tutup"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="navt" data-act="noop">' +
+      '<div class="sheet-h"><h2 class="h2" id="navt">Navigasi Soal</h2><button type="button" class="iconbtn" data-act="nav-tutup" aria-label="Tutup navigasi soal">' + ic('x', 18) + '</button></div>' +
+      '<p class="note">Dijawab ' + dj + ' dari ' + n + '. Belum dijawab ' + (n - dj) + '. Ragu-ragu ' + rg + '.</p>' +
+      navGrid(a) +
+      '<button type="button" class="btn btn-block" data-act="nav-tutup">Tutup</button></div></div>';
+  }
+
+  function vUjianJalan() {
+    var a = aktif, n = a.ids.length, id = a.ids[a.idx], q = Q[id];
+    var jawab = a.answers, terjawab = 0, ragu = 0;
+    a.ids.forEach(function (x) { if (jawab[x] !== undefined && jawab[x] !== null) terjawab++; if (a.flags[x]) ragu++; });
+    var sisa = n - terjawab, isRagu = !!a.flags[id];
+    var rem = Math.max(0, Math.ceil((a.endAt - Date.now()) / 1000));
+    var h = '<div class="qhead"><span class="chip">Soal ' + (a.idx + 1) + ' dari ' + n + '</span>' +
+      '<button type="button" class="chip chip-btn" data-act="nav-buka" aria-haspopup="dialog" aria-label="Buka navigasi soal">' + ic('grid', 14) + '</button>' +
+      '<button type="button" class="chip chip-btn chip-ico" data-act="calc-buka" aria-haspopup="dialog" aria-label="Buka kalkulator">' + ic('calc', 16) + '</button>' +
+      '<span class="chip timer" id="timer" role="timer" aria-label="Sisa waktu" data-low="' + (rem < 60 ? 1 : 0) + '">' + fmtTime(rem) + '</span></div>';
+    h += '<section class="glass card qsec"><p class="qtext">' + esc(q.tanya) + '</p><div class="opts">';
+    q.opsi.forEach(function (o, k) {
+      var sel = jawab[id] === k;
+      h += '<button type="button" class="opt' + (sel ? ' sel' : '') + '" data-act="uj-jawab" data-k="' + k + '" aria-pressed="' + (sel ? 'true' : 'false') + '"><span class="lt">' + LET[k] + '</span><span class="tx"><span>' + esc(o) + '</span></span></button>';
+    });
+    h += '</div></section>';
+    h += '<div class="ctl"><button type="button" class="btn btn-ghost btn-step" data-act="uj-prev" aria-label="Soal sebelumnya"' + (a.idx === 0 ? ' disabled' : '') + '>' + ic('left', 22) + '</button>' +
+      '<button type="button" class="btn btn-ghost btn-ragu" data-act="uj-ragu" aria-pressed="' + (isRagu ? 'true' : 'false') + '"' + (jawab[id] === undefined || jawab[id] === null ? ' disabled title="Pilih jawaban dulu"' : '') + '>' + ic('flag', 16) + 'Ragu-ragu</button>' +
+      '<button type="button" class="btn btn-ghost btn-step" data-act="uj-next" aria-label="Soal berikutnya"' + (a.idx >= n - 1 ? ' disabled' : '') + '>' + ic('chev', 22) + '</button></div>';
+    if (confirming && sisa === 0) {
+      h += '<div class="confirm"><p><b>Akhiri ujian sekarang?</b> Jawaban tidak bisa diubah setelahnya.' + (ragu ? ' Masih ada ' + ragu + ' soal ditandai ragu-ragu.' : '') + '</p><div class="row"><button type="button" class="btn" data-act="uj-ya">Ya, akhiri</button><button type="button" class="btn btn-ghost" data-act="uj-batal">Kembali</button></div></div>';
+    } else {
+      h += '<button type="button" class="btn btn-block" data-act="uj-akhiri"' + (sisa > 0 ? ' disabled' : '') + '>Akhiri Ujian</button>';
+      if (sisa > 0) h += '<p class="note" style="text-align:center">Masih ada ' + sisa + ' soal yang belum dijawab.</p>';
+      else if (ragu) h += '<p class="note" style="text-align:center">Ada ' + ragu + ' soal ditandai ragu-ragu. Buka Nomor untuk meninjau.</p>';
+    }
+    return h;
+  }
+
+  function vUjianHasil() {
+    var r = ujHasil;
+    return '<h1 class="h1">Hasil Ujian</h1>' +
+      '<section class="glass card"><div class="eyebrow" style="color:var(--ink-2)">Nilai</div><div class="score">' + fmtNum(r.nilai) + '<small> / 100</small></div>' +
+      '<p class="lead">' + (r.waktuHabis ? 'Waktu habis. Soal yang belum dijawab dihitung salah.' : 'Ujian diakhiri.') + ' Lama pengerjaan ' + fmtTime(r.durasi) + '.</p></section>' +
+      '<div class="two"><div class="glass"><b>' + r.benar + '</b><span>Jawaban benar</span></div><div class="glass"><b>' + r.salah + '</b><span>Jawaban salah</span></div></div>' +
+      '<p class="note">Hasil ini sudah tersimpan di menu Progres.</p>' +
+      '<div class="row"><button type="button" class="btn" data-act="go" data-v="progres">Lihat Progres</button><button type="button" class="btn btn-ghost" data-act="uj-ulang">Ujian lagi</button></div>';
+  }
+
+  function ujMulai() {
+    if (!ALL.length) { toast('Belum ada soal tersedia.'); return; }
+    muat('Menyiapkan ujian', ujMulaiInti);
+  }
+
+  function ujMulaiInti() {
+    var ids = shuffle(ALL).slice(0, ujianJumlah());
+    var now = Date.now();
+    aktif = { id: now.toString(36) + Math.random().toString(36).slice(2, 6), startAt: now, endAt: now + D.pengaturan.ujianMenit * 60000, ids: ids, answers: {}, flags: {}, idx: 0 };
+    ujHasil = null; confirming = false; navOpen = false;
+    saveAktif();
+    render({ top: true });
+  }
+
+  function finish(waktuHabis) {
+    if (!aktif) return;
+    var a = aktif, benar = 0, total = a.ids.length;
+    var detail = {};
+    a.ids.forEach(function (id) {
+      var jw = a.answers[id];
+      if (jw === undefined || jw === null) detail[id] = -1;
+      else if (jw === Q[id].kunci) { detail[id] = 1; benar++; }
+      else detail[id] = 0;
+    });
+    var end = Math.min(Date.now(), a.endAt);
+    var rec = {
+      id: a.id, tanggal: new Date(end).toISOString(), benar: benar, salah: total - benar, total: total,
+      nilai: Math.round(benar / total * 1000) / 10, durasi: Math.round((end - a.startAt) / 1000), waktuHabis: !!waktuHabis,
+      detail: detail
+    };
+    var h = getHist();
+    h.push(rec);
+    setHist(h);
+    aktif = null; sdel(K_AKTIF); confirming = false; ujHasil = rec;
+    if (view !== 'ujian') toast('Waktu ujian habis. Hasil sudah tersimpan di Progres.');
+    render({ top: true });
+  }
+
+  function tick() {
+    if (!aktif) return;
+    var rem = aktif.endAt - Date.now();
+    if (rem <= 0) { finish(true); return; }
+    var el = document.getElementById('timer');
+    if (el) {
+      var s = Math.ceil(rem / 1000);
+      el.textContent = fmtTime(s);
+      el.setAttribute('data-low', s < 60 ? '1' : '0');
+    }
+  }
+  setInterval(tick, 500);
+  document.addEventListener('visibilitychange', tick);
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || !(navOpen || calcOpen)) return;
+    var kal = calcOpen;
+    closePopup(function () { fokus(kal ? 'calc-buka' : 'nav-buka'); });
+  });
+
+  /* ----- kalkulator ----- */
+  var OPSYM = { '+': '+', '-': '\u2212', '*': '\u00d7', '/': '\u00f7' };
+  function calcBaru() { return { cur: '0', acc: null, op: null, fresh: false, expr: '', err: false }; }
+  calc = calcBaru();
+  function cFmt(x) {
+    x = String(x);
+    if (/e/i.test(x)) return x.replace('.', ',');
+    var neg = x.charAt(0) === '-'; if (neg) x = x.slice(1);
+    var p = x.split('.'), ip = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return (neg ? '-' : '') + ip + (p.length > 1 ? ',' + p[1] : '');
+  }
+  function cHitung(a, o, b) {
+    var r = o === '+' ? a + b : o === '-' ? a - b : o === '*' ? a * b : (b === 0 ? NaN : a / b);
+    if (!isFinite(r)) return null;
+    return String(parseFloat(r.toPrecision(12)));
+  }
+  function cError() { calc = calcBaru(); calc.err = true; }
+  function cTekan(k) {
+    if (calc.err && k !== 'C') calc = calcBaru();
+    var c = calc, r;
+    if (k.length === 1 && k >= '0' && k <= '9') {
+      if (c.fresh) { c.cur = k; c.fresh = false; }
+      else if (c.cur.replace(/[-.]/g, '').length < 15) c.cur = c.cur === '0' ? k : (c.cur === '-0' ? '-' + k : c.cur + k);
+    } else if (k === '.') {
+      if (c.fresh) { c.cur = '0.'; c.fresh = false; }
+      else if (c.cur.indexOf('.') < 0) c.cur += '.';
+    } else if (k === 'C') {
+      calc = calcBaru();
+    } else if (k === 'B') {
+      if (!c.fresh) c.cur = (c.cur.length > 1 && !(c.cur.length === 2 && c.cur.charAt(0) === '-')) ? c.cur.slice(0, -1) : '0';
+    } else if (k === 'N') {
+      if (c.cur !== '0' && c.cur !== '0.') c.cur = c.cur.charAt(0) === '-' ? c.cur.slice(1) : '-' + c.cur;
+    } else if (k === '%') {
+      c.cur = String(parseFloat((parseFloat(c.cur) / 100).toPrecision(12))); c.fresh = true;
+    } else if (OPSYM[k]) {
+      if (c.op && c.acc !== null && !c.fresh) {
+        r = cHitung(c.acc, c.op, parseFloat(c.cur));
+        if (r === null) { cError(); return; }
+        c.acc = parseFloat(r); c.cur = r;
+      } else c.acc = parseFloat(c.cur);
+      c.op = k; c.fresh = true; c.expr = cFmt(c.cur) + ' ' + OPSYM[k];
+    } else if (k === '=') {
+      if (c.op && c.acc !== null) {
+        var b = c.fresh ? c.acc : parseFloat(c.cur);
+        r = cHitung(c.acc, c.op, b);
+        if (r === null) { cError(); return; }
+        c.expr = cFmt(c.acc) + ' ' + OPSYM[c.op] + ' ' + cFmt(b) + ' =';
+        c.cur = r; c.acc = null; c.op = null; c.fresh = true;
+      }
+    }
+  }
+  function calcTeks() { return calc.err ? 'Tidak valid' : cFmt(calc.cur); }
+  function calcUkuran(t) { return t.length > 14 ? 22 : (t.length > 10 ? 28 : 36); }
+  function calcUpdate() {
+    var d = document.getElementById('calcd'), e = document.getElementById('calce');
+    if (!d || !e) return;
+    var t = calcTeks();
+    d.textContent = t; d.style.fontSize = calcUkuran(t) + 'px';
+    e.textContent = calc.expr || '\u00a0';
+  }
+  function vCalcPopup() {
+    var K = [
+      ['C', 'C', 'fn', 'Hapus semua'], ['B', ic('bksp', 22), 'fn', 'Hapus satu angka'], ['%', '%', 'fn', 'Persen'], ['/', '\u00f7', 'op', 'Bagi'],
+      ['7', '7'], ['8', '8'], ['9', '9'], ['*', '\u00d7', 'op', 'Kali'],
+      ['4', '4'], ['5', '5'], ['6', '6'], ['-', '\u2212', 'op', 'Kurang'],
+      ['1', '1'], ['2', '2'], ['3', '3'], ['+', '+', 'op', 'Tambah'],
+      ['N', '\u00b1', 'fn', 'Ubah positif atau negatif'], ['0', '0'], ['.', ',', '', 'Koma desimal'], ['=', '=', 'op', 'Sama dengan']
+    ];
+    var t = calcTeks();
+    return '<div class="ov" data-act="calc-tutup"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="calct" data-act="noop">' +
+      '<div class="sheet-h"><h2 class="h2" id="calct">Kalkulator</h2><button type="button" class="iconbtn" data-act="calc-tutup" aria-label="Tutup kalkulator">' + ic('x', 18) + '</button></div>' +
+      '<div class="cdisp"><div class="ce" id="calce">' + (calc.expr ? esc(calc.expr) : '&nbsp;') + '</div><div class="cd" id="calcd" style="font-size:' + calcUkuran(t) + 'px">' + esc(t) + '</div></div>' +
+      '<div class="ckeys">' + K.map(function (x) {
+        return '<button type="button" class="ck' + (x[2] ? ' ' + x[2] : '') + '" data-act="calc-key" data-k="' + x[0] + '"' + (x[3] ? ' aria-label="' + x[3] + '"' : '') + '>' + x[1] + '</button>';
+      }).join('') + '</div></div></div>';
+  }
+
+  /* ----- progres ----- */
+  function vProgres() {
+    var h = getHist(), st = stats(h);
+    var html = '<h1 class="h1">Progres Ujian</h1><p class="lead">Riwayat nilai dari ujian quiz yang sudah kamu selesaikan.</p>' + statsHtml(st);
+    html += '<section class="glass card"><h2 class="h2"><span class="dot"></span>Perkembangan Nilai</h2>' + chart(h) + '</section>';
+    html += vPenguasaan(h, analisis(h));
+    html += '<section class="glass card"><h2 class="h2"><span class="dot"></span>Riwayat</h2>';
+    if (!h.length) html += '<p class="empty">Belum ada riwayat ujian.</p>';
+    else {
+      html += '<ul class="hist">';
+      h.slice().reverse().forEach(function (r) {
+        html += '<li><div class="hn"><b>' + esc(fmtDate(r.tanggal)) + '</b><span>' + r.benar + ' benar, ' + r.salah + ' salah' + (r.waktuHabis ? ', waktu habis' : '') + '</span></div><span class="nv">' + fmtNum(r.nilai) + '</span></li>';
+      });
+      html += '</ul>';
+    }
+    html += '</section>';
+    html += '<section class="glass card"><h2 class="h2"><span class="dot"></span>Cadangan riwayat</h2>' +
+      '<p class="lead">Riwayat tersimpan di browser ini saja. Simpan cadangan agar tidak hilang saat data browser dihapus atau saat berganti HP.</p>' +
+      '<div class="row"><button type="button" class="btn btn-ghost" data-act="pr-salin"' + (h.length ? '' : ' disabled') + '>Salin cadangan</button>' +
+      (window.QL_CAN_DOWNLOAD ? '<button type="button" class="btn btn-ghost" data-act="pr-unduh"' + (h.length ? '' : ' disabled') + '>Unduh file</button>' : '') + '</div>';
+    if (cadangan) html += '<label for="cad" class="note">Salin teks berikut secara manual:</label><textarea id="cad" readonly>' + esc(cadangan) + '</textarea>';
+    html += '<label for="imp" class="note">Pulihkan dari cadangan: tempel teks cadangan atau pilih file.</label>' +
+      '<textarea id="imp" placeholder="Tempel teks cadangan di sini"></textarea>' +
+      '<div class="row"><button type="button" class="btn btn-sm" data-act="pr-pulihkan">Pulihkan</button>' +
+      '<span class="btn btn-ghost btn-sm filebtn">Pilih file cadangan<input type="file" id="impFile" accept=".json,application/json,text/plain" aria-label="Pilih file cadangan"></span></div></section>';
+    if (h.length) {
+      if (hapusConfirm) html += '<div class="confirm"><p><b>Hapus semua riwayat ujian?</b> Tindakan ini tidak bisa dibatalkan.</p><div class="row"><button type="button" class="btn" data-act="pr-hapus-ya">Ya, hapus</button><button type="button" class="btn btn-ghost" data-act="pr-hapus-batal">Batal</button></div></div>';
+      else html += '<button type="button" class="btn btn-ghost btn-block" data-act="pr-hapus">Hapus semua riwayat</button>';
+    }
+    return html;
+  }
+
+  function soalItem(s, tipe) {
+    var q = Q[s.id], n = s.benar + s.salah;
+    var info = tipe === 'salah' ? 'Salah ' + s.salah + ' dari ' + n + ' kali' : 'Benar ' + s.benar + ' dari ' + n + ' kali';
+    return '<li><div class="qt">' + esc(q.tanya) + '</div><div class="qm"><span class="chip">' + esc(q.babJudul.split('.')[0]) + '</span><span class="small muted">' + info + '</span></div></li>';
+  }
+  function daftarSoal(judul, list, tipe, kosong) {
+    var html = '<section class="glass card"><h2 class="h2"><span class="dot"></span>' + judul + '</h2>';
+    if (!list.length) return html + '<p class="empty">' + kosong + '</p></section>';
+    html += '<ul class="qlist">' + list.slice(0, 10).map(function (s) { return soalItem(s, tipe); }).join('') + '</ul>';
+    if (list.length > 10) html += '<p class="note">Dan ' + (list.length - 10) + ' soal lainnya.</p>';
+    if (tipe === 'salah') html += '<button type="button" class="btn btn-block" data-act="lat-mulai" data-b="salah">' + ic('pencil', 18) + 'Latih soal-soal ini</button>';
+    return html + '</section>';
+  }
+  function vPenguasaan(h, an) {
+    var html = '<section class="glass card"><h2 class="h2"><span class="dot"></span>Penguasaan per Bab</h2>';
+    if (!h.length) return html + '<p class="empty">Selesaikan satu ujian untuk melihat bab yang sudah dan belum kamu kuasai.</p></section>';
+    if (!an.ada) return html + '<p class="empty">Ujian sebelumnya belum mencatat hasil per soal. Analisis muncul setelah ujian berikutnya selesai.</p></section>';
+    html += '<ul class="mast">';
+    an.bab.forEach(function (x) {
+      var teks = !x.n ? 'Belum ada jawaban' : (x.n < MIN_BAB ? 'Baru ' + x.n + ' jawaban (minimal ' + MIN_BAB + ' agar dinilai)' : x.n + ' jawaban, ' + x.pct + '% benar');
+      html += '<li class="mrow"><div class="mtop"><span class="mt">' + esc(x.b.judul) + '</span><span class="pill pill-' + x.st.k + '">' + x.st.t + '</span></div>' +
+        '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + x.pct + '" aria-label="Persentase benar ' + esc(x.b.judul) + '"><i style="width:' + x.pct + '%"></i></div>' +
+        '<div class="mbot"><span class="small muted">' + teks + '</span><button type="button" class="btn btn-ghost btn-sm" data-act="lat-mulai" data-b="' + x.b.id + '">Latih</button></div></li>';
+    });
+    html += '</ul><p class="note">Dihitung dari semua jawaban di riwayat ujian. Dikuasai mulai ' + BATAS_KUASAI + '% benar, Cukup mulai ' + BATAS_CUKUP + '%. Soal yang tidak sempat dijawab karena waktu habis tidak ikut dihitung.</p></section>';
+    html += daftarSoal('Soal yang Sering Salah', an.salah, 'salah', 'Belum ada soal yang sering salah. Soal baru dinilai setelah dijawab minimal ' + MIN_SOAL + ' kali.');
+    html += daftarSoal('Soal yang Selalu Benar', an.benar, 'benar', 'Belum ada soal yang dijawab benar terus. Soal baru dinilai setelah dijawab minimal ' + MIN_SOAL + ' kali.');
+    return html;
+  }
+
+  function cadanganJson() {
+    return JSON.stringify({ app: 'quizlearn', versi: 2, diekspor: new Date().toISOString(), riwayat: getHist() });
+  }
+  function pulihkan(text) {
+    var obj = parse((text || '').trim(), null);
+    var arr = Array.isArray(obj) ? obj : (obj && Array.isArray(obj.riwayat) ? obj.riwayat : null);
+    if (!arr) { toast('Teks cadangan tidak dikenali. Pastikan disalin utuh.'); return; }
+    var valid = arr.filter(validRec).map(cleanRec);
+    if (!valid.length) { toast('Tidak ada riwayat yang valid di cadangan ini.'); return; }
+    var h = getHist(), ada = {}, tambah = 0;
+    h.forEach(function (r) { ada[r.id] = true; });
+    valid.forEach(function (r) { if (!ada[r.id]) { ada[r.id] = true; h.push(r); tambah++; } });
+    h.sort(function (a, b) { return new Date(a.tanggal) - new Date(b.tanggal); });
+    setHist(h);
+    toast(tambah + ' riwayat berhasil dipulihkan.');
+    render();
+  }
+
+  /* ---------- aksi ---------- */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-act]') : null;
+    if (!t || t.disabled) return;
+    var act = t.getAttribute('data-act');
+    var a = aktif;
+
+    if (act === 'noop') return;
+    if (act === 'go') { go(t.getAttribute('data-v')); return; }
+
+    if (act === 'lat-mulai') { latMulai(t.getAttribute('data-b')); return; }
+    if (act === 'lat-jawab') {
+      var lid = lat.list[lat.i];
+      if (lat.fase !== 'jalan' || lat.ans[lid] !== undefined) return;
+      lat.ans[lid] = parseInt(t.getAttribute('data-k'), 10);
+      render(); return;
+    }
+    if (act === 'lat-prev') { pindahSoal('prev', function () { if (lat.i > 0) lat.i--; }); return; }
+    if (act === 'lat-next') { pindahSoal('next', function () { if (lat.i < lat.list.length - 1) lat.i++; }); return; }
+    if (act === 'lat-ke') {
+      var latTujuan = parseInt(t.getAttribute('data-i'), 10);
+      if (latTujuan !== lat.i) { var latArah = latTujuan < lat.i ? 'prev' : 'next'; lat.i = latTujuan; render({ top: true, questionDirection: latArah }); }
+      closePopup(function () { fokus('nav-buka'); });
+      return;
+    }
+    if (act === 'lat-akhiri') { if (latHitung().dj >= lat.list.length) { lat.fase = 'selesai'; navOpen = false; render({ top: true }); } return; }
+    if (act === 'lat-ulang') { latMulai(lat.b); return; }
+    if (act === 'lat-keluar') { lat = latBaru(); navOpen = false; render({ top: true }); return; }
+
+    if (act === 'uj-mulai') { ujMulai(); return; }
+    if (act === 'uj-ulang') { ujHasil = null; render({ top: true }); return; }
+    if (!a && act.indexOf('uj-') === 0) return;
+    if (act === 'uj-jawab') { a.answers[a.ids[a.idx]] = parseInt(t.getAttribute('data-k'), 10); confirming = false; saveAktif(); render(); return; }
+    if (act === 'uj-ke') {
+      var ujTujuan = parseInt(t.getAttribute('data-i'), 10);
+      if (ujTujuan !== a.idx) { var ujArah = ujTujuan < a.idx ? 'prev' : 'next'; a.idx = ujTujuan; confirming = false; saveAktif(); render({ top: true, questionDirection: ujArah }); }
+      closePopup(function () { fokus('nav-buka'); });
+      return;
+    }
+    if (act === 'uj-ragu') { var rid = a.ids[a.idx]; if (a.answers[rid] === undefined || a.answers[rid] === null) return; if (a.flags[rid]) delete a.flags[rid]; else a.flags[rid] = true; saveAktif(); render(); return; }
+    if (act === 'calc-buka') { calcOpen = true; navOpen = false; syncOverlay(); var kb = $ov.querySelector('.iconbtn'); if (kb) kb.focus(); return; }
+    if (act === 'calc-tutup') { closePopup(function () { fokus('calc-buka'); }); return; }
+    if (act === 'calc-key') { cTekan(t.getAttribute('data-k')); calcUpdate(); return; }
+    if (act === 'nav-buka') { navOpen = true; calcOpen = false; syncOverlay(); var cb = $ov.querySelector('.iconbtn'); if (cb) cb.focus(); return; }
+    if (act === 'nav-tutup') { closePopup(function () { fokus('nav-buka'); }); return; }
+    if (act === 'uj-prev') { pindahSoal('prev', function () { if (a.idx > 0) a.idx--; confirming = false; saveAktif(); }); return; }
+    if (act === 'uj-next') { pindahSoal('next', function () { if (a.idx < a.ids.length - 1) a.idx++; confirming = false; saveAktif(); }); return; }
+    if (act === 'uj-akhiri') { confirming = true; render(); return; }
+    if (act === 'uj-batal') { confirming = false; render(); return; }
+    if (act === 'uj-ya') { finish(false); return; }
+
+    if (act === 'pr-salin') {
+      var json = cadanganJson();
+      var fallback = function () { cadangan = json; render(); toast('Salin teks cadangan secara manual dari kotak di bawah.'); };
+      try {
+        navigator.clipboard.writeText(json).then(function () { cadangan = null; toast('Cadangan disalin. Tempel dan simpan di catatan atau pesan ke diri sendiri.'); }, fallback);
+      } catch (err) { fallback(); }
+      return;
+    }
+    if (act === 'pr-unduh') {
+      try {
+        var blob = new Blob([cadanganJson()], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url; link.download = 'cadangan-quizlearn.json';
+        document.body.appendChild(link); link.click(); document.body.removeChild(link);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+        toast('File cadangan diunduh.');
+      } catch (err) { toast('Unduh gagal. Gunakan tombol Salin cadangan.'); }
+      return;
+    }
+    if (act === 'pr-pulihkan') { var ta = document.getElementById('imp'); pulihkan(ta ? ta.value : ''); return; }
+    if (act === 'pr-hapus') { hapusConfirm = true; render(); return; }
+    if (act === 'pr-hapus-batal') { hapusConfirm = false; render(); return; }
+    if (act === 'pr-hapus-ya') { setHist([]); hapusConfirm = false; ujHasil = null; toast('Riwayat dihapus.'); render(); return; }
+  });
+
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'impFile' && e.target.files && e.target.files[0]) {
+      var rd = new FileReader();
+      rd.onload = function () { pulihkan(String(rd.result || '')); };
+      rd.onerror = function () { toast('File tidak bisa dibaca.'); };
+      rd.readAsText(e.target.files[0]);
+    }
+  });
+
+  /* ---------- layar sambutan ---------- */
+  function welcome() {
+    var el = document.createElement('div');
+    el.id = 'welcome'; el.className = 'wel'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'welt');
+    el.innerHTML = '<div class="wel-blur"></div><div class="wel-body"><div class="logo" aria-hidden="true">' + ic('bolt', 22) + '</div><h1 class="wel-t" id="welt">Are you ready?</h1><button type="button" class="btn wel-btn" id="welbtn">I am ready!</button></div>';
+    document.body.appendChild(el);
+    var inertEls = [document.querySelector('.app'), document.getElementById('dock')];
+    inertEls.forEach(function (x) { if (x) x.setAttribute('inert', ''); });
+    document.body.style.overflow = 'hidden';
+    var btn = document.getElementById('welbtn'), blur = el.querySelector('.wel-blur'), body = el.querySelector('.wel-body');
+    btn.focus();
+    var busy = false;
+    function selesai() {
+      if (el.parentNode) el.parentNode.removeChild(el);
+      inertEls.forEach(function (x) { if (x) x.removeAttribute('inert'); });
+      document.body.style.overflow = navOpen ? 'hidden' : '';
+      try { $main.focus({ preventScroll: true }); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      if (busy) return; busy = true;
+      var r = btn.getBoundingClientRect();
+      bukaBlur(el, blur, body, r.left + r.width / 2, r.top + r.height / 2, selesai);
+    });
+  }
+
+  /* Animasi buka buram (dipakai layar sambutan dan layar loading): lingkaran jernih melebar dari titik (cx, cy) */
+  function bukaBlur(el, blur, body, cx, cy, selesai) {
+    var W = window.innerWidth, H = window.innerHeight;
+    var dx = Math.max(cx, W - cx), dy = Math.max(cy, H - cy);
+    var soft = 160, total = Math.sqrt(dx * dx + dy * dy) + soft;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    body.classList.add('out');
+    if (reduce || !window.requestAnimationFrame) { el.classList.add('fade'); setTimeout(selesai, 260); return; }
+    var dur = 1100, t0 = null;
+    function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), R = ease(p) * total;
+      var sf = Math.min(soft, R);
+      var m = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent ' + R + 'px, #000 ' + (R + sf) + 'px)';
+      blur.style.webkitMaskImage = m; blur.style.maskImage = m;
+      if (p < 1) requestAnimationFrame(frame); else selesai();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- layar loading 0-100% sebelum latihan / ujian dimulai ---------- */
+  var memuat = false;
+  function muat(label, aksi) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (memuat) return;
+    if (reduce || !window.requestAnimationFrame) { aksi(); return; }
+    memuat = true;
+    var el = document.createElement('div');
+    el.className = 'wel ld'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', label);
+    el.innerHTML = '<div class="wel-blur"></div><div class="wel-body"><div class="logo" aria-hidden="true">' + ic('bolt', 22) + '</div>' +
+      '<div class="ld-pct">0%</div><div class="ld-bar" aria-hidden="true"><i></i></div><div class="ld-lbl">' + esc(label) + '</div></div>';
+    document.body.appendChild(el);
+    var inertEls = [document.querySelector('.app'), document.getElementById('dock')];
+    inertEls.forEach(function (x) { if (x) x.setAttribute('inert', ''); });
+    document.body.style.overflow = 'hidden';
+    var pct = el.querySelector('.ld-pct'), bar = el.querySelector('.ld-bar i'), blur = el.querySelector('.wel-blur'), body = el.querySelector('.wel-body');
+    function selesai() {
+      if (el.parentNode) el.parentNode.removeChild(el);
+      inertEls.forEach(function (x) { if (x) x.removeAttribute('inert'); });
+      document.body.style.overflow = (navOpen || calcOpen) ? 'hidden' : '';
+      memuat = false;
+      try { $main.focus({ preventScroll: true }); } catch (e) {}
+    }
+    var dur = 1000, t0 = null;
+    function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = ease(p);
+      pct.textContent = Math.round(e * 100) + '%';
+      bar.style.transform = 'scaleX(' + e + ')';
+      if (p < 1) { requestAnimationFrame(frame); return; }
+      aksi();   // latihan/ujian dibangun di balik layar buram
+      setTimeout(function () {
+        var r = body.getBoundingClientRect();
+        bukaBlur(el, blur, body, r.left + r.width / 2, r.top + r.height / 2, selesai);
+      }, 180);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- efek tekan tombol (delegasi: berlaku juga untuk tombol yang dibuat dinamis) ---------- */
+  (function () {
+    var selector = 'button:not([disabled]),input[type="button"]:not([disabled]),input[type="submit"]:not([disabled]),input[type="reset"]:not([disabled]),[role="button"]:not([aria-disabled="true"]),.btn:not([disabled]),.back:not([disabled]),.filebtn:not([disabled]),.chip-btn:not([disabled])';
+    var pressed = null, releaseTimer = null;
+    function release() {
+      if (pressed) pressed.classList.remove('ql-pressed');
+      pressed = null;
+      if (releaseTimer) { clearTimeout(releaseTimer); releaseTimer = null; }
+    }
+    document.addEventListener('pointerdown', function (e) {
+      var el = e.target && e.target.closest ? e.target.closest(selector) : null;
+      if (!el) return;
+      release();
+      pressed = el;
+      el.classList.add('ql-pressed');
+    }, true);
+    function scheduleRelease() {
+      if (releaseTimer) clearTimeout(releaseTimer);
+      releaseTimer = setTimeout(release, 170);
+    }
+    document.addEventListener('pointerup', scheduleRelease, true);
+    document.addEventListener('pointercancel', release, true);
+    window.addEventListener('blur', release);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== ' ' && e.key !== 'Enter') return;
+      var el = document.activeElement;
+      if (el && el.matches && el.matches(selector)) { pressed = el; el.classList.add('ql-pressed'); }
+    }, true);
+    document.addEventListener('keyup', function (e) {
+      if (e.key === ' ' || e.key === 'Enter') scheduleRelease();
+    }, true);
+  })();
+
+  /* ---------- mulai ---------- */
+  if (aktif && aktif.endAt <= Date.now()) {
+    finish(true);
+    toast('Waktu ujian sebelumnya sudah habis. Hasil tersimpan di Progres.');
+  } else {
+    render();
+  }
+  if (!aktif) welcome();   // ujian yang sedang berjalan tidak ditunda oleh layar sambutan
+})();
+
+</script>
+
+</body></html>
